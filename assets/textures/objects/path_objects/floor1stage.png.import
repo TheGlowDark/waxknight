@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3d77g2dk5lxq"
-path="res://.godot/imported/floor1stage.png-285d09732c25a683d40e6b896786365a.ctex"
+uid="uid://cdn2b1va16uqy"
+path="res://.godot/imported/floor1stage.png-baac6fc9c03491fa35e55d227253136c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/objects/floor_and_walls/floor1stage.png"
-dest_files=["res://.godot/imported/floor1stage.png-285d09732c25a683d40e6b896786365a.ctex"]
+source_file="res://assets/textures/objects/path_objects/floor1stage.png"
+dest_files=["res://.godot/imported/floor1stage.png-baac6fc9c03491fa35e55d227253136c.ctex"]
 
 [params]
 
