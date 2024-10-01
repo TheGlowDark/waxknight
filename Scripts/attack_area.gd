@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage: int = 50
+@export var damage: int
 @onready var col = $CollisionShape2D
 
 

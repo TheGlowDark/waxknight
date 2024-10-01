@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=8 format=3 uid="uid://wurbk1dl6mpo"]
 
 [ext_resource type="Texture2D" uid="uid://75fhdq0dnt3k" path="res://icon.svg" id="1_um7hp"]
 [ext_resource type="Texture2D" uid="uid://br48jsm22atlu" path="res://assets/textures/objects/objects.png" id="1_yrify"]
 [ext_resource type="PackedScene" uid="uid://bbwahqculxqy1" path="res://Scenes/Player/player.tscn" id="2_b6flt"]
-[ext_resource type="PackedScene" uid="uid://djlntha484psc" path="res://Scenes/Enemies/knight/knight.tscn" id="2_iiac8"]
+[ext_resource type="PackedScene" uid="uid://djlntha484psc" path="res://Scenes/Enemies/Knight/knight.tscn" id="2_iiac8"]
+[ext_resource type="PackedScene" uid="uid://lsq2weax06w7" path="res://Scenes/Enemies/Helmet/helmet.tscn" id="5_0f3hd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml6ep"]
 size = Vector2(130, 6)
@@ -94,3 +95,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_poyr3")
+
+[node name="Helmet" parent="." instance=ExtResource("5_0f3hd")]
+position = Vector2(176, -52)
