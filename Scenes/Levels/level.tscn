@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=7 format=3 uid="uid://wurbk1dl6mpo"]
 
+[ext_resource type="Texture2D" uid="uid://75fhdq0dnt3k" path="res://icon.svg" id="1_um7hp"]
 [ext_resource type="Texture2D" uid="uid://br48jsm22atlu" path="res://assets/textures/objects/objects.png" id="1_yrify"]
 [ext_resource type="PackedScene" uid="uid://bbwahqculxqy1" path="res://Scenes/Player/player.tscn" id="2_b6flt"]
 [ext_resource type="PackedScene" uid="uid://djlntha484psc" path="res://Scenes/Enemies/knight/knight.tscn" id="2_iiac8"]
@@ -7,7 +8,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml6ep"]
 size = Vector2(130, 6)
 
+[sub_resource type="Environment" id="Environment_poyr3"]
+background_mode = 3
+tonemap_mode = 3
+
 [node name="Level" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(20, 20)
+texture = ExtResource("1_um7hp")
 
 [node name="Player" parent="." instance=ExtResource("2_b6flt")]
 
@@ -78,3 +88,9 @@ region_rect = Rect2(225.296, 57.9712, 131.347, 7.56731)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D5"]
 shape = SubResource("RectangleShape2D_ml6ep")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_poyr3")
