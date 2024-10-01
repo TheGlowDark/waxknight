@@ -5,8 +5,6 @@ extends State
 
 
 func enter():
-	if player.health <= 0:
-		state_transition.emit(self, "Death")
-	animator.play("attack")
+	animator.play("death", -1, 2)
 	await animator.animation_finished
-	state_transition.emit(self, "Idle")
+	print("player died")

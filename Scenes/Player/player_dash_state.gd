@@ -12,6 +12,9 @@ func enter():
 	state_transition.emit(self, 'Idle')
 
 func update(delta):
+	if player.health <= 0:
+		state_transition.emit(self, "Death")
+
 	var tween = create_tween()
 	if player.sprite.scale.x == 1:
 		player.velocity.x = dash_speed * delta

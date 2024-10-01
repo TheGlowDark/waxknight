@@ -17,6 +17,9 @@ func enter():
 	player.velocity.y = jump_velocity
 
 func update(_delta : float):
+	if player.health <= 0:
+		state_transition.emit(self, "Death")
+
 	var input_dir = Input.get_axis("left", "right")
 	jump(input_dir, _delta)
 	if Input.is_action_just_pressed("dash"):

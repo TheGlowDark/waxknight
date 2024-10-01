@@ -1,8 +1,8 @@
 extends CharacterBase
-class_name Player
+class_name Enemy
 
 @onready var fsm = $FSM as FiniteStateMachine
+var player: Player
 
 func _physics_process(delta):
-	if fsm.current_state.name != 'Jump':
-		super.fall(delta)
+	super.fall(delta)

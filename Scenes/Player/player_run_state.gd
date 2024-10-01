@@ -12,6 +12,9 @@ func enter():
 	animator.play("run")
 
 func update(delta : float):
+	if player.health <= 0:
+		state_transition.emit(self, "Death")
+	
 	var input_dir = Input.get_axis("left", "right")
 	move(input_dir, delta)
 

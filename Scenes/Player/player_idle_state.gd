@@ -7,6 +7,9 @@ func enter():
 	animator.play("idle")
 
 func update(_delta):
+	if player.health <= 0:
+		state_transition.emit(self, "Death")
+
 	player.velocity.x = 0
 	player.move_and_slide()
 

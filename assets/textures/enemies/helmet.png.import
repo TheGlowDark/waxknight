@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdn2b1va16uqy"
-path="res://.godot/imported/floor1stage.png-baac6fc9c03491fa35e55d227253136c.ctex"
+uid="uid://c712vp3camf0u"
+path="res://.godot/imported/helmet.png-da3b25b1ab94c4ac2b0f13afdc99fb2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/objects/path_objects/floor1stage.png"
-dest_files=["res://.godot/imported/floor1stage.png-baac6fc9c03491fa35e55d227253136c.ctex"]
+source_file="res://assets/textures/enemies/helmet.png"
+dest_files=["res://.godot/imported/helmet.png-da3b25b1ab94c4ac2b0f13afdc99fb2f.ctex"]
 
 [params]
 
