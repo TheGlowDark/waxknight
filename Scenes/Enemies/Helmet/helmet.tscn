@@ -155,7 +155,7 @@ radius = 8.01561
 [node name="Helmet" type="CharacterBody2D"]
 script = ExtResource("1_140h3")
 falling = false
-health = 1
+health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -5)
