@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/player_jump_state.gd" id="6_dno4x"]
 [ext_resource type="Script" path="res://Scenes/Player/player_run_state.gd" id="7_p3y2n"]
 [ext_resource type="Script" path="res://Scenes/Player/player_death_state.gd" id="10_6cckm"]
-[ext_resource type="Texture2D" uid="uid://dfrqc0n7t4fks" path="res://assets/textures/light_texture.webp" id="11_1jpgm"]
+[ext_resource type="Texture2D" uid="uid://bw7j6h4ongtmj" path="res://assets/textures/pictureLightMask2_thumb.png" id="11_muj2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dh5g"]
 size = Vector2(11, 20)
@@ -263,6 +263,6 @@ shape = SubResource("RectangleShape2D_pj2b3")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, -24)
-texture = ExtResource("11_1jpgm")
+texture = ExtResource("11_muj2n")
 
 [connection signal="area_entered" from="Sprite2D/AttackArea" to="Sprite2D/AttackArea" method="_on_area_entered"]
