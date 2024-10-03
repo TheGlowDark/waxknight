@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=9 format=3 uid="uid://wurbk1dl6mpo"]
 
 [ext_resource type="Texture2D" uid="uid://75fhdq0dnt3k" path="res://icon.svg" id="1_um7hp"]
 [ext_resource type="Texture2D" uid="uid://br48jsm22atlu" path="res://assets/textures/objects/objects.png" id="1_yrify"]
 [ext_resource type="PackedScene" uid="uid://bbwahqculxqy1" path="res://Scenes/Player/player.tscn" id="2_b6flt"]
 [ext_resource type="PackedScene" uid="uid://djlntha484psc" path="res://Scenes/Enemies/Knight/knight.tscn" id="2_iiac8"]
 [ext_resource type="PackedScene" uid="uid://cxaecwbnfdyto" path="res://Scenes/Enemies/Hand/hand.tscn" id="5_6ko0k"]
+[ext_resource type="PackedScene" uid="uid://cmw75r86xsyr7" path="res://Scenes/Light/point_light_2d.tscn" id="6_und71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml6ep"]
 size = Vector2(130, 6)
@@ -92,7 +93,6 @@ region_rect = Rect2(225.296, 57.9712, 131.347, 7.56731)
 shape = SubResource("RectangleShape2D_ml6ep")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -100,3 +100,7 @@ environment = SubResource("Environment_poyr3")
 
 [node name="Hand" parent="." instance=ExtResource("5_6ko0k")]
 position = Vector2(251, -4)
+
+[node name="LIGHT_FOR_TEST" parent="." instance=ExtResource("6_und71")]
+position = Vector2(134, -32)
+scale = Vector2(0.5, 0.5)

@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/player_jump_state.gd" id="6_dno4x"]
 [ext_resource type="Script" path="res://Scenes/Player/player_run_state.gd" id="7_p3y2n"]
 [ext_resource type="Script" path="res://Scenes/Player/player_death_state.gd" id="10_6cckm"]
-[ext_resource type="Texture2D" uid="uid://boqmhm5vflqxd" path="res://assets/textures/2d_lights_and_shadows_neutral_point_light.webp" id="11_jjtek"]
+[ext_resource type="PackedScene" uid="uid://cmw75r86xsyr7" path="res://Scenes/Light/point_light_2d.tscn" id="11_vfkos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dh5g"]
 size = Vector2(11, 20)
@@ -278,8 +278,7 @@ collision_mask = 0
 position = Vector2(0.5, -10.5)
 shape = SubResource("RectangleShape2D_pj2b3")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1, -24)
-texture = ExtResource("11_jjtek")
+[node name="PointLight2D" parent="." instance=ExtResource("11_vfkos")]
+position = Vector2(2, -25)
 
 [connection signal="area_entered" from="Sprite2D/AttackArea" to="Sprite2D/AttackArea" method="_on_area_entered"]
