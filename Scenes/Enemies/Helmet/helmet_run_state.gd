@@ -1,8 +1,9 @@
 extends State
 
-@onready var animator := $"../../AnimationPlayer"
+@onready var animator := $"../../AnimationPlayer" as AnimationPlayer
 @onready var enemy := $"../.."
-@onready var sprite = $"../../Sprite2D"
+@onready var sprite := $"../../Sprite2D"
+@onready var timer := $Timer
 var speed := 5000.0
 
 func enter():
@@ -13,22 +14,16 @@ func update(delta):
 	if enemy.health <= 0:
 		state_transition.emit(self, "Death")
 	
-	if enemy.is_on_floor():
-		enemy.velocity.y = 0
-	else:
-		enemy.velocity.y += enemy.gravity * delta
-	
 	var distance = (enemy.player.global_position - enemy.global_position)
-	enemy.velocity.x = distance.normalized().x * speed * delta
+	enemy.velocity.y = distance.normalized().y * speed * delta
 	enemy.move_and_slide()
 	
 	if distance.x < 0:
 		sprite.scale.x = -1
 	else:
 		sprite.scale.x = 1
-
-	if distance.length() < 20:
-		if enemy.player.health > 0:
-			state_transition.emit(self, 'Attack')
-		else:
-			state_transition.emit(self, "Idle")
+	
+	if not animator.is_playing() and timer.is_stopped():
+		# enemy.velocity.x = distance.normalized().x * speed * delta
+		timer.start()
+		state_transition.emit(self, "Attack")

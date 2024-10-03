@@ -6,15 +6,11 @@ extends State
 func enter():
 	animator.play("idle")
 
-func update(delta):
+func update(_delta):
 	if enemy.health <= 0:
 		state_transition.emit(self, "Death")
-
-	if enemy.is_on_floor():
-		enemy.velocity.y = 0
-	else:
-		enemy.velocity.y += enemy.gravity * delta
-		enemy.move_and_slide()
+	
+	enemy.move_and_slide() # for falling if needed
 	
 	if enemy.player and enemy.player.health > 0:
 		state_transition.emit(self, "Run")

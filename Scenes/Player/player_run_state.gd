@@ -8,7 +8,6 @@ var speed: float = 10000.0
 
 
 func enter():
-	player = $"../.."
 	animator.play("run")
 
 func update(delta : float):
@@ -18,13 +17,13 @@ func update(delta : float):
 	var input_dir = Input.get_axis("left", "right")
 	move(input_dir, delta)
 
-
-	if Input.is_action_just_pressed("attack"):
-		state_transition.emit(self, "attack")
-	if Input.is_action_just_pressed("up") and player.is_on_floor():
-		state_transition.emit(self, "Jump")
-	if Input.is_action_just_pressed("dash") and player.is_on_floor():
-		state_transition.emit(self, "Dash")
+	if player.is_on_floor():
+		if Input.is_action_just_pressed("attack"):
+			state_transition.emit(self, "attack")
+		if Input.is_action_just_pressed("up") and player.is_on_floor():
+			state_transition.emit(self, "Jump")
+		if Input.is_action_just_pressed("dash") and player.is_on_floor():
+			state_transition.emit(self, "Dash")
 
 
 func move(input_dir: float, delta: float):

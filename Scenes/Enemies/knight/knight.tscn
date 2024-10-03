@@ -1,14 +1,14 @@
 [gd_scene load_steps=21 format=3 uid="uid://djlntha484psc"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Knight/enemy.gd" id="1_agbub"]
 [ext_resource type="Texture2D" uid="uid://xjycjwg5sf7y" path="res://assets/textures/enemies/knight.png" id="1_qqbud"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_xr1ga"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="2_1lfhq"]
 [ext_resource type="Script" path="res://Scripts/attack_area.gd" id="3_ne21g"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Knight/knight_idle_state.gd" id="3_t3w5o"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Knight/knight_attack_state.gd" id="3_ywgrx"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Knight/knight_death_state.gd" id="4_y4t0q"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Knight/knight_hit_state.gd" id="5_5mgcq"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Knight/knight_run_state.gd" id="7_y65vd"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_attack_state.gd" id="5_g62h0"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_death_state.gd" id="6_2rdx7"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_hit_state.gd" id="7_aahfa"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_idle_state.gd" id="8_pdsn4"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_run_state.gd" id="9_2dise"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5yl6e"]
 size = Vector2(11, 20)
@@ -155,8 +155,8 @@ size = Vector2(14, 28)
 
 [node name="Knight" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 7
-script = ExtResource("1_agbub")
+collision_mask = 5
+script = ExtResource("1_xr1ga")
 health = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -190,19 +190,22 @@ script = ExtResource("2_1lfhq")
 initial_state = NodePath("Idle")
 
 [node name="Attack" type="Node" parent="FSM"]
-script = ExtResource("3_ywgrx")
+script = ExtResource("5_g62h0")
 
 [node name="Death" type="Node" parent="FSM"]
-script = ExtResource("4_y4t0q")
+script = ExtResource("6_2rdx7")
 
 [node name="Hit" type="Node" parent="FSM"]
-script = ExtResource("5_5mgcq")
+script = ExtResource("7_aahfa")
 
 [node name="Idle" type="Node" parent="FSM"]
-script = ExtResource("3_t3w5o")
+script = ExtResource("8_pdsn4")
 
 [node name="Run" type="Node" parent="FSM"]
-script = ExtResource("7_y65vd")
+script = ExtResource("9_2dise")
+
+[node name="Timer" type="Timer" parent="FSM/Run"]
+one_shot = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0

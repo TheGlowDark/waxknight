@@ -1,14 +1,14 @@
 [gd_scene load_steps=21 format=3 uid="uid://lsq2weax06w7"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Knight/enemy.gd" id="1_140h3"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_j00k5"]
 [ext_resource type="Texture2D" uid="uid://c712vp3camf0u" path="res://assets/textures/enemies/helmet.png" id="1_rl1v7"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="2_uiaep"]
 [ext_resource type="Script" path="res://Scripts/attack_area.gd" id="3_vrgtm"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Helmet/helmet_attack_state.gd" id="4_b6da3"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Helmet/helmet_death_state.gd" id="5_qx4y0"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Helmet/helmet_hit_state.gd" id="6_cljgk"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Helmet/helmet_idle_state.gd" id="7_bcxvd"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Helmet/helmet_prepare_state.gd" id="8_rqak4"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_death_state.gd" id="6_dcp3n"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_hit_state.gd" id="7_urn65"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_idle_state.gd" id="8_a2a68"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Helmet/helmet_run_state.gd" id="8_rqak4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emuuk"]
 radius = 4.0
@@ -121,7 +121,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_un1mu"]
-resource_name = "prepare"
+resource_name = "run"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -143,7 +143,7 @@ _data = {
 "death": SubResource("Animation_hwp6c"),
 "hit": SubResource("Animation_cwkoc"),
 "idle": SubResource("Animation_orx0f"),
-"prepare": SubResource("Animation_un1mu")
+"run": SubResource("Animation_un1mu")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8pkx"]
@@ -153,9 +153,11 @@ radius = 87.0
 radius = 8.01561
 
 [node name="Helmet" type="CharacterBody2D"]
-script = ExtResource("1_140h3")
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_j00k5")
 falling = false
-health = 2
+health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -5)
@@ -191,16 +193,20 @@ initial_state = NodePath("Idle")
 script = ExtResource("4_b6da3")
 
 [node name="Death" type="Node" parent="FSM"]
-script = ExtResource("5_qx4y0")
+script = ExtResource("6_dcp3n")
 
 [node name="Hit" type="Node" parent="FSM"]
-script = ExtResource("6_cljgk")
+script = ExtResource("7_urn65")
 
 [node name="Idle" type="Node" parent="FSM"]
-script = ExtResource("7_bcxvd")
+script = ExtResource("8_a2a68")
 
-[node name="Prepare" type="Node" parent="FSM"]
+[node name="Run" type="Node" parent="FSM"]
 script = ExtResource("8_rqak4")
+
+[node name="Timer" type="Timer" parent="FSM/Run"]
+wait_time = 2.0
+one_shot = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0

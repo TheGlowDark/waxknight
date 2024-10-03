@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://br48jsm22atlu" path="res://assets/textures/objects/objects.png" id="1_yrify"]
 [ext_resource type="PackedScene" uid="uid://bbwahqculxqy1" path="res://Scenes/Player/player.tscn" id="2_b6flt"]
 [ext_resource type="PackedScene" uid="uid://djlntha484psc" path="res://Scenes/Enemies/Knight/knight.tscn" id="2_iiac8"]
-[ext_resource type="PackedScene" uid="uid://lsq2weax06w7" path="res://Scenes/Enemies/Helmet/helmet.tscn" id="5_0f3hd"]
+[ext_resource type="PackedScene" uid="uid://cxaecwbnfdyto" path="res://Scenes/Enemies/Hand/hand.tscn" id="5_6ko0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml6ep"]
 size = Vector2(130, 6)
@@ -21,6 +21,7 @@ scale = Vector2(20, 20)
 texture = ExtResource("1_um7hp")
 
 [node name="Player" parent="." instance=ExtResource("2_b6flt")]
+position = Vector2(0, 2)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)
@@ -91,10 +92,11 @@ region_rect = Rect2(225.296, 57.9712, 131.347, 7.56731)
 shape = SubResource("RectangleShape2D_ml6ep")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_poyr3")
 
-[node name="Helmet" parent="." instance=ExtResource("5_0f3hd")]
-position = Vector2(176, -52)
+[node name="Hand" parent="." instance=ExtResource("5_6ko0k")]
+position = Vector2(251, -4)

@@ -12,7 +12,6 @@ func fall(delta):
 		velocity.y = 0
 	else:
 		velocity.y += gravity * delta
-
 #region Taking Damage
 
 #Play universal damage sound effect for any character taking damage and flashing red

@@ -6,6 +6,6 @@ class_name Player
 
 func _physics_process(delta):
 	point_light.energy = health
-	point_light.texture_scale = health
+	point_light.texture_scale = health / 1.5
 	if fsm.current_state.name != 'Jump':
 		super.fall(delta)

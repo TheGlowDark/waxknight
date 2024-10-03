@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbwahqculxqy1"]
+[gd_scene load_steps=25 format=3 uid="uid://bbwahqculxqy1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2y4dy"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="1_afjq4"]
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 2)]
+"values": [Vector2i(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -132,6 +132,23 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_irk07"]
+resource_name = "fall"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 4)]
+}
+
 [sub_resource type="Animation" id="Animation_so045"]
 resource_name = "idle"
 length = 0.3
@@ -189,6 +206,7 @@ _data = {
 "climb": SubResource("Animation_o3nht"),
 "dash": SubResource("Animation_j1lmg"),
 "death": SubResource("Animation_ylywj"),
+"fall": SubResource("Animation_irk07"),
 "idle": SubResource("Animation_so045"),
 "jump": SubResource("Animation_jipvv"),
 "run": SubResource("Animation_pmn1c")
@@ -211,7 +229,6 @@ position = Vector2(0, -19)
 texture = ExtResource("2_mxuyk")
 hframes = 6
 vframes = 6
-frame = 12
 
 [node name="AttackArea" type="Area2D" parent="Sprite2D"]
 collision_layer = 0
