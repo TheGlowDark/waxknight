@@ -1,8 +1,6 @@
 extends Area2D
 
 @export var damage: int
-@onready var col = $CollisionShape2D
-
 
 
 func _on_area_entered(area):

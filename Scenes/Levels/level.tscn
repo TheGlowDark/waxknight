@@ -99,8 +99,8 @@ color = Color(0, 0, 0, 1)
 environment = SubResource("Environment_poyr3")
 
 [node name="Hand" parent="." instance=ExtResource("5_6ko0k")]
-position = Vector2(251, -4)
+position = Vector2(251, -13)
 
 [node name="PointLight2D" parent="." instance=ExtResource("6_und71")]
-position = Vector2(242, -26)
+position = Vector2(242, -29)
 light_scale = 0.5

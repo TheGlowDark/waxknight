@@ -17,7 +17,10 @@ func update(delta):
 
 	
 	var distance = (enemy.player.global_position - enemy.global_position)
-	enemy.velocity.x = distance.normalized().x * speed * delta
+	if distance.length() >= attack_distance:
+		enemy.velocity.x = distance.normalized().x * speed * delta
+	else:
+		enemy.velocity.x = distance.normalized().x * speed * delta * 0.1
 	enemy.move_and_slide()
 	
 	if distance.x < 0:

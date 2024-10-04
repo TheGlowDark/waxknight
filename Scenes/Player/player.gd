@@ -3,7 +3,7 @@ class_name Player
 
 @onready var fsm = $FSM as FiniteStateMachine
 @onready var point_light = $PointLight2D
-@onready var timer = $PointLight2D/Timer
+@onready var timer_2 = $PointLight2D/Timer2
 var current_frame := 0
 var light_frames: Array
 
@@ -18,10 +18,9 @@ func _ready():
 func _physics_process(delta):
 	point_light.texture = light_frames[current_frame]
 	point_light.energy = health
-	point_light.texture_scale = health
+	point_light.texture_scale = health * 0.5
 	if fsm.current_state.name != 'Jump':
 		super.fall(delta)
 
-
-func _on_timer_timeout():
+func _on_timer_2_timeout():
 	current_frame = (current_frame + 1) % 3
