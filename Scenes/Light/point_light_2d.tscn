@@ -1,19 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmw75r86xsyr7"]
+[gd_scene load_steps=3 format=3 uid="uid://bsfpya8paop5f"]
 
-[ext_resource type="Texture2D" uid="uid://rb5wk27ouhdy" path="res://assets/textures/light/light64-animated_noframes1.png" id="1_rw7m5"]
-[ext_resource type="Texture2D" uid="uid://cxvs5x4ifaspc" path="res://assets/textures/light/light64-animated_noframes2.png" id="2_8l0jg"]
-[ext_resource type="Texture2D" uid="uid://byva5b675lgap" path="res://assets/textures/light/light64-animated_noframes3.png" id="3_nfjrj"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_55hnp"]
-frames = 3
-frame_0/texture = ExtResource("1_rw7m5")
-frame_0/duration = 0.5
-frame_1/texture = ExtResource("2_8l0jg")
-frame_1/duration = 0.5
-frame_2/texture = ExtResource("3_nfjrj")
-frame_2/duration = 0.5
+[ext_resource type="Texture2D" uid="uid://rb5wk27ouhdy" path="res://assets/textures/light/light0.png" id="1_rw7m5"]
+[ext_resource type="Script" path="res://Scenes/Light/PointLight2D.gd" id="2_nfh0x"]
 
 [node name="PointLight2D" type="PointLight2D"]
-scale = Vector2(0.25, 0.25)
-blend_mode = 2
-texture = SubResource("AnimatedTexture_55hnp")
+texture = ExtResource("1_rw7m5")
+script = ExtResource("2_nfh0x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

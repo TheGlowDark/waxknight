@@ -1,9 +1,7 @@
-extends CharacterBase
-class_name Player
+extends PointLight2D
 
-@onready var fsm = $FSM as FiniteStateMachine
-@onready var point_light = $PointLight2D
-@onready var timer = $PointLight2D/Timer
+@export var light_scale: float = 1
+@export var light_energy: float = 1
 var current_frame := 0
 var light_frames: Array
 
@@ -13,14 +11,12 @@ func _ready():
 	var light_frame1 = preload("res://assets/textures/light/light1.png")
 	var light_frame2 = preload("res://assets/textures/light/light2.png")
 	light_frames = [light_frame0, light_frame1, light_frame2]
-	print(light_frames)
 
-func _physics_process(delta):
-	point_light.texture = light_frames[current_frame]
-	point_light.energy = health
-	point_light.texture_scale = health
-	if fsm.current_state.name != 'Jump':
-		super.fall(delta)
+
+func _physics_process(_delta):
+	texture = light_frames[current_frame]
+	energy = light_energy
+	texture_scale = light_scale
 
 
 func _on_timer_timeout():
