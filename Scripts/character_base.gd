@@ -39,7 +39,7 @@ func _take_damage(amount):
 
 func _die():
 	#Remove/destroy this character once it's able to do so unless its the player
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	if is_instance_valid(self) and not self is Player:
 		queue_free()
 
