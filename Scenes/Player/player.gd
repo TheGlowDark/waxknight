@@ -17,7 +17,7 @@ func _ready():
 func _physics_process(delta):
 	point_light.texture = light_frames[current_frame]
 	point_light.energy = health
-	point_light.texture_scale = health * 0.1
+	point_light.texture_scale = health * 0.5
 	if fsm.current_state.name != 'Jump':
 		super.fall(delta)
 
