@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsfpya8paop5f"]
 
 [ext_resource type="Texture2D" uid="uid://rb5wk27ouhdy" path="res://assets/textures/light/light0.png" id="1_rw7m5"]
-[ext_resource type="Script" path="res://Scenes/Light/PointLight2D.gd" id="2_nfh0x"]
+[ext_resource type="Script" path="res://Scenes/Light/light_source.gd" id="2_731xu"]
 
-[node name="PointLight2D" type="PointLight2D"]
+[node name="Lightsource" type="PointLight2D"]
 texture = ExtResource("1_rw7m5")
-script = ExtResource("2_nfh0x")
+script = ExtResource("2_731xu")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

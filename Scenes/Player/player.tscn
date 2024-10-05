@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/player_jump_state.gd" id="6_dno4x"]
 [ext_resource type="Script" path="res://Scenes/Player/player_run_state.gd" id="7_p3y2n"]
 [ext_resource type="Script" path="res://Scenes/Player/player_death_state.gd" id="10_6cckm"]
-[ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Light/point_light_2d.tscn" id="11_vfkos"]
+[ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Light/light_source.tscn" id="11_vfkos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dh5g"]
 size = Vector2(11, 20)

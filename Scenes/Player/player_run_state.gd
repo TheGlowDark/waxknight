@@ -20,9 +20,9 @@ func update(delta : float):
 	if player.is_on_floor():
 		if Input.is_action_just_pressed("attack"):
 			state_transition.emit(self, "attack")
-		if Input.is_action_just_pressed("up") and player.is_on_floor():
+		if Input.is_action_just_pressed("up"):
 			state_transition.emit(self, "Jump")
-		if Input.is_action_just_pressed("dash") and player.is_on_floor():
+		if Input.is_action_just_pressed("dash"):
 			state_transition.emit(self, "Dash")
 
 
