@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bbwahqculxqy1"]
+[gd_scene load_steps=26 format=3 uid="uid://bbwahqculxqy1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2y4dy"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="1_afjq4"]
@@ -215,6 +215,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj2b3"]
 size = Vector2(15, 21)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ypac"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_2y4dy")
@@ -285,6 +288,14 @@ script = null
 [node name="Timer2" type="Timer" parent="PointLight2D"]
 wait_time = 0.5
 autostart = true
+
+[node name="FireArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireArea"]
+position = Vector2(2, -24)
+shape = SubResource("CircleShape2D_3ypac")
 
 [connection signal="area_entered" from="Sprite2D/AttackArea" to="Sprite2D/AttackArea" method="_on_area_entered"]
 [connection signal="timeout" from="PointLight2D/Timer2" to="." method="_on_timer_2_timeout"]

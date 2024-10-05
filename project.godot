@@ -15,6 +15,15 @@ run/main_scene="res://Scenes/Levels/level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CursorManager="*res://Scenes/Other/cursor_manager.tscn"
+GameManager="*res://Scripts/GameManager.gd"
+
+[display]
+
+mouse_cursor/custom_image="res://assets/textures/empty_sprite.png"
+
 [input]
 
 left={
@@ -58,6 +67,7 @@ attack={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Objects"
+2d_physics/layer_4="Fire"
 
 [rendering]
 
