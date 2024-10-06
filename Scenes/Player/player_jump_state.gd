@@ -30,8 +30,12 @@ func jump(input_dir: float, delta: float):
 	player.velocity.y += get_gravity() * delta
 	player.velocity.x = input_dir * speed * delta
 	player.move_and_slide()
+	# flipping sprite if needed
+	if input_dir:
+		sprite.scale.x = sign(input_dir)
 	if player.is_on_floor():
 		state_transition.emit(self, "Idle")
+	
 
 func get_gravity():
 	return jump_gravity if player.velocity.y < 0.0 else fall_gravity

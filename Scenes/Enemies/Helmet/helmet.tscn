@@ -154,7 +154,7 @@ radius = 8.01561
 
 [node name="Helmet" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 36
 script = ExtResource("1_j00k5")
 falling = false
 health = 1

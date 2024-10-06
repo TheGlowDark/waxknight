@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bbwahqculxqy1"]
+[gd_scene load_steps=28 format=3 uid="uid://bbwahqculxqy1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2y4dy"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="1_afjq4"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://Scenes/Player/player_death_state.gd" id="10_6cckm"]
 [ext_resource type="Script" path="res://Scenes/Player/player_fall_state.gd" id="11_12216"]
 [ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Light/light_source.tscn" id="11_vfkos"]
-[ext_resource type="Script" path="res://Scenes/Player/player_descend_state.gd" id="12_k77y2"]
 [ext_resource type="Script" path="res://Scenes/Player/player_climb_state.gd" id="12_lv0sf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dh5g"]
@@ -90,7 +89,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_o3nht"]
 resource_name = "climb"
-length = 0.3
+length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -99,7 +98,7 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2i(0, 1), Vector2i(1, 1)]
@@ -217,13 +216,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj2b3"]
-size = Vector2(15, 22)
+size = Vector2(15, 21)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ypac"]
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 36
+collision_mask = 4
 script = ExtResource("1_2y4dy")
 health = 3
 
@@ -281,17 +280,14 @@ script = ExtResource("10_6cckm")
 [node name="Fall" type="Node" parent="FSM"]
 script = ExtResource("11_12216")
 
-[node name="Descend" type="Node" parent="FSM"]
-script = ExtResource("12_k77y2")
-
 [node name="Climb" type="Node" parent="FSM"]
 script = ExtResource("12_lv0sf")
 
 [node name="DamageArea" type="Area2D" parent="."]
-collision_mask = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(0.5, -10)
+position = Vector2(0.5, -10.5)
 shape = SubResource("RectangleShape2D_pj2b3")
 
 [node name="PointLight2D" parent="." instance=ExtResource("11_vfkos")]

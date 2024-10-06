@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bbwahqculxqy1"]
+[gd_scene load_steps=30 format=3 uid="uid://bbwahqculxqy1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2y4dy"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="1_afjq4"]
@@ -217,17 +217,21 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj2b3"]
-size = Vector2(15, 22)
+size = Vector2(15, 21)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ypac"]
 radius = 5.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qadof"]
+size = Vector2(15, 12)
+
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 36
+collision_mask = 4
 script = ExtResource("1_2y4dy")
 health = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1.5, -10)
 shape = SubResource("RectangleShape2D_4dh5g")
 
@@ -288,10 +292,10 @@ script = ExtResource("12_k77y2")
 script = ExtResource("12_lv0sf")
 
 [node name="DamageArea" type="Area2D" parent="."]
-collision_mask = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(0.5, -10)
+position = Vector2(0.5, -10.5)
 shape = SubResource("RectangleShape2D_pj2b3")
 
 [node name="PointLight2D" parent="." instance=ExtResource("11_vfkos")]
@@ -309,6 +313,13 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FireArea"]
 position = Vector2(2, -24)
 shape = SubResource("CircleShape2D_3ypac")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 32
+
+[node name="DescendCollisionShape" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_qadof")
 
 [connection signal="area_entered" from="Sprite2D/AttackArea" to="Sprite2D/AttackArea" method="_on_area_entered"]
 [connection signal="timeout" from="PointLight2D/Timer2" to="." method="_on_timer_2_timeout"]
