@@ -7,4 +7,5 @@ extends State
 func enter():
 	animator.play("death", -1, 2)
 	await animator.animation_finished
-	print("player died")
+	GameManager.load_game()
+	state_transition.emit(self, "Idle")

@@ -30,4 +30,5 @@ func load_game():
 	if save_file == OK:
 		player.global_position.x = config.get_value("Player", "x")
 		player.global_position.y = config.get_value("Player", "y")
-	
+		player.health = 3
+		player.sprite.self_modulate.a = 255

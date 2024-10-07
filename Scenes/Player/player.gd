@@ -2,11 +2,13 @@ extends CharacterBase
 class_name Player
 
 @onready var fsm = $FSM as FiniteStateMachine
+@onready var animator = $AnimationPlayer
 @onready var point_light := $PointLight2D
 @onready var timer_2 := $PointLight2D/Timer2
 @onready var fire_area := $FireArea
 @onready var collision_shape = $CollisionShape2D
 @onready var damage_area = $DamageArea
+
 
 
 var current_frame := 0
