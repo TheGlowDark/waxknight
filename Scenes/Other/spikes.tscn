@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj3qsmpakj26p"]
+
+[ext_resource type="Script" path="res://Scripts/attack_area.gd" id="1_6qekp"]
+[ext_resource type="Texture2D" uid="uid://bht0worjkrwfm" path="res://assets/textures/objects/traps/spikes.png" id="2_61501"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo03n"]
+atlas = ExtResource("2_61501")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkfnk"]
+atlas = ExtResource("2_61501")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rg3dj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo03n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkfnk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qwqe"]
+size = Vector2(64, 11)
+
+[node name="Spikes" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_6qekp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_rg3dj")
+autoplay = "default"
+frame_progress = 0.276448
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_4qwqe")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=17 format=3 uid="uid://wurbk1dl6mpo"]
 
 [ext_resource type="Texture2D" uid="uid://b7je1i0w7n86u" path="res://assets/textures/objects/traps/tube.png" id="1_tqlis"]
 [ext_resource type="Texture2D" uid="uid://br48jsm22atlu" path="res://assets/textures/objects/objects.png" id="1_yrify"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cdgy511b1qc6k" path="res://Scenes/Enemies/Summoner/summoner.tscn" id="4_bnp3r"]
 [ext_resource type="PackedScene" uid="uid://cl7rvsp1jsbn2" path="res://Scenes/Enemies/Wisp/wisp.tscn" id="4_pe5k1"]
 [ext_resource type="PackedScene" uid="uid://c8oi2j2cbx6dh" path="res://Scenes/Other/moving_platform.tscn" id="6_lqflk"]
+[ext_resource type="PackedScene" uid="uid://bj3qsmpakj26p" path="res://Scenes/Other/spikes.tscn" id="9_7iy8s"]
+[ext_resource type="PackedScene" uid="uid://d0svxhcdbk08e" path="res://Scenes/Other/torch.tscn" id="10_bvnih"]
+[ext_resource type="PackedScene" uid="uid://cg37nybvbkwtq" path="res://Scenes/Other/bonfire.tscn" id="11_1um2b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yppl6"]
 texture = ExtResource("1_tqlis")
@@ -264,6 +267,20 @@ tonemap_mode = 3
 
 [node name="Level" type="Node2D"]
 
+[node name="Player" parent="." instance=ExtResource("2_b6flt")]
+z_index = 1
+position = Vector2(110, -77)
+health = 2
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(6, 6)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jqfmu")
 format = 2
@@ -277,20 +294,7 @@ layer_2/tile_data = PackedInt32Array(-1114111, 262144, 0, -1114105, 1048576, 0)
 [node name="WaterdropSpawner" parent="." instance=ExtResource("3_31cfg")]
 position = Vector2(30, -123)
 
-[node name="Player" parent="." instance=ExtResource("2_b6flt")]
-position = Vector2(110, -77)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(6, 6)
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -309,3 +313,15 @@ position = Vector2(315, -376)
 [node name="MovingPlatform2" parent="." instance=ExtResource("6_lqflk")]
 position = Vector2(406, -521)
 direction = Vector2(1, 0)
+
+[node name="Spikes" parent="." instance=ExtResource("9_7iy8s")]
+position = Vector2(317, -182)
+
+[node name="Torch" parent="." instance=ExtResource("10_bvnih")]
+position = Vector2(410, -47)
+
+[node name="Bonfire2" parent="." instance=ExtResource("11_1um2b")]
+position = Vector2(244, -789)
+
+[node name="Bonfire" parent="." instance=ExtResource("11_1um2b")]
+position = Vector2(106, -149)
