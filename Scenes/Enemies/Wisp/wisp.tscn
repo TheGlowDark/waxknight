@@ -1,0 +1,168 @@
+[gd_scene load_steps=18 format=3 uid="uid://cl7rvsp1jsbn2"]
+
+[ext_resource type="Texture2D" uid="uid://ca7q6wkfsw65a" path="res://assets/textures/enemies/wisp.png" id="1_7e2ql"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Wisp/wisp.gd" id="1_tt6vt"]
+[ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="3_83iv5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f16o4"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iglhk"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfcat"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv6u1"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gt5g"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sng7p"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0oiy"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bth1x"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18uvy"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v54rh"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ywq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f16o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iglhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfcat")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv6u1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gt5g")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sng7p")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0oiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bth1x")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18uvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v54rh")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wne8v"]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxgnd"]
+size = Vector2(18, 21)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1547d"]
+radius = 7.0
+
+[node name="Wisp" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 36
+script = ExtResource("1_tt6vt")
+falling = false
+health = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, -20)
+sprite_frames = SubResource("SpriteFrames_7ywq4")
+animation = &"front"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_wne8v")
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_uxgnd")
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(0, 6)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_1547d")
+
+[node name="RaycastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 19)
+collision_mask = 36
+
+[node name="RaycastUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -35)
+collision_mask = 36
+
+[node name="RaycastRight" type="RayCast2D" parent="."]
+target_position = Vector2(26, 0)
+collision_mask = 100
+
+[node name="RaycastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-27, 0)
+collision_mask = 100
+
+[node name="FSM" type="Node" parent="."]
+script = ExtResource("3_83iv5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]

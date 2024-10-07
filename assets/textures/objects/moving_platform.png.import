@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu44p0h8tflov"
-path="res://.godot/imported/moving_platform.png-41c2d949fc0316c45a4ca048e9d29143.ctex"
+path="res://.godot/imported/moving_platform.png-de9783419c562abbe98996ef3c616971.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/objects/traps/moving_platform.png"
-dest_files=["res://.godot/imported/moving_platform.png-41c2d949fc0316c45a4ca048e9d29143.ctex"]
+source_file="res://assets/textures/objects/moving_platform.png"
+dest_files=["res://.godot/imported/moving_platform.png-de9783419c562abbe98996ef3c616971.ctex"]
 
 [params]
 

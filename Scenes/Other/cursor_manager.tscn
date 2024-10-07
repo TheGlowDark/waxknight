@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Other/CursorManager.gd" id="1_4x56t"]
 [ext_resource type="Texture2D" uid="uid://ng566iuhsfdn" path="res://assets/textures/companion/cursor.png" id="2_t5kno"]
-[ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Light/light_source.tscn" id="3_mds2y"]
+[ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Other/light_source.tscn" id="3_mds2y"]
 
 [sub_resource type="Animation" id="Animation_x4vib"]
 length = 0.001

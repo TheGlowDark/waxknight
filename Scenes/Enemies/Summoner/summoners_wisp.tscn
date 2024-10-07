@@ -70,7 +70,7 @@ size = Vector2(14, 13)
 
 [node name="SummonersWisp" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 36
 script = ExtResource("1_vund3")
 falling = false
 health = 1

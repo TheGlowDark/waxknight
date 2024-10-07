@@ -11,9 +11,9 @@
 [ext_resource type="Script" path="res://Scenes/Player/player_run_state.gd" id="7_p3y2n"]
 [ext_resource type="Script" path="res://Scenes/Player/player_death_state.gd" id="10_6cckm"]
 [ext_resource type="Script" path="res://Scenes/Player/player_fall_state.gd" id="11_12216"]
-[ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Light/light_source.tscn" id="11_vfkos"]
 [ext_resource type="Script" path="res://Scenes/Player/player_descend_state.gd" id="12_k77y2"]
 [ext_resource type="Script" path="res://Scenes/Player/player_climb_state.gd" id="12_lv0sf"]
+[ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Other/light_source.tscn" id="14_xq4ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dh5g"]
 size = Vector2(11, 20)
@@ -310,7 +310,7 @@ collision_mask = 32
 position = Vector2(0.5, -10)
 shape = SubResource("RectangleShape2D_pj2b3")
 
-[node name="PointLight2D" parent="." instance=ExtResource("11_vfkos")]
+[node name="PointLight2D" parent="." instance=ExtResource("14_xq4ya")]
 position = Vector2(2, -25)
 script = null
 

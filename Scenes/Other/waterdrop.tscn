@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbhh13iey6mn2"]
+
+[ext_resource type="Texture2D" uid="uid://hm10d6g3ue1v" path="res://assets/textures/objects/traps/waterdrop.png" id="1_f4m2w"]
+[ext_resource type="Script" path="res://Scenes/Other/waterdrop.gd" id="1_vwbj1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dghx"]
+atlas = ExtResource("1_f4m2w")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe4r2"]
+atlas = ExtResource("1_f4m2w")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juenv"]
+atlas = ExtResource("1_f4m2w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h1m5"]
+atlas = ExtResource("1_f4m2w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pvyp"]
+atlas = ExtResource("1_f4m2w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8he2x"]
+atlas = ExtResource("1_f4m2w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5kiw"]
+atlas = ExtResource("1_f4m2w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eg6b3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dghx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe4r2")
+}],
+"loop": false,
+"name": &"drop",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juenv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h1m5")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pvyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8he2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5kiw")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqy4k"]
+
+[node name="Waterdrop" type="Area2D"]
+collision_layer = 0
+collision_mask = 37
+script = ExtResource("1_vwbj1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 15)
+sprite_frames = SubResource("SpriteFrames_eg6b3")
+animation = &"spawn"
+autoplay = "spawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 6)
+shape = SubResource("CircleShape2D_tqy4k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

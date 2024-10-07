@@ -35,6 +35,6 @@ func can_descend():
 
 func update_light():
 	var tween = create_tween()
-	tween.tween_property(point_light, "texture_scale", health*0.5, 0.5)
-	point_light.energy = health
+	tween.tween_property(point_light, "texture_scale", max(0, health*0.5), 0.5)
+	point_light.energy = max(0, health)
 	point_light.texture = light_frames[current_frame]
