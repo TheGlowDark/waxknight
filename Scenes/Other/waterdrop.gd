@@ -20,6 +20,8 @@ func _on_area_entered(area):
 		if parent is Enemy and parent.health > 0:
 			var fsm = parent.fsm
 			fsm.current_state.state_transition.emit(fsm.current_state, "Hit")
+	if area is Lightable and area.is_fired:
+		area.shut()
 
 func _on_body_entered(_body):
 	can_move = false

@@ -18,6 +18,9 @@ func _on_area_entered(area):
 
 
 func _on_timer_timeout():
+	if is_fired:
+		shut()
+
+func shut():
 	is_fired = false
 	animator.play_backwards("light")
-

@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=18 format=3 uid="uid://wurbk1dl6mpo"]
 
 [ext_resource type="Texture2D" uid="uid://b7je1i0w7n86u" path="res://assets/textures/objects/traps/tube.png" id="1_tqlis"]
 [ext_resource type="Texture2D" uid="uid://br48jsm22atlu" path="res://assets/textures/objects/objects.png" id="1_yrify"]
 [ext_resource type="PackedScene" uid="uid://bbwahqculxqy1" path="res://Scenes/Player/player.tscn" id="2_b6flt"]
+[ext_resource type="PackedScene" uid="uid://djlntha484psc" path="res://Scenes/Enemies/Knight/knight.tscn" id="2_fn6xv"]
 [ext_resource type="Texture2D" uid="uid://b1ctrnw7v0p8p" path="res://assets/textures/background.png" id="2_wfi70"]
 [ext_resource type="PackedScene" uid="uid://cq0xhu7fssyjh" path="res://Scenes/Other/waterdrop_spawner.tscn" id="3_31cfg"]
 [ext_resource type="PackedScene" uid="uid://cdgy511b1qc6k" path="res://Scenes/Enemies/Summoner/summoner.tscn" id="4_bnp3r"]
@@ -270,16 +271,7 @@ tonemap_mode = 3
 [node name="Player" parent="." instance=ExtResource("2_b6flt")]
 z_index = 1
 position = Vector2(110, -77)
-health = 2
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(6, 6)
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
+health = 10
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jqfmu")
@@ -295,6 +287,7 @@ layer_2/tile_data = PackedInt32Array(-1114111, 262144, 0, -1114105, 1048576, 0)
 position = Vector2(30, -123)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -325,3 +318,6 @@ position = Vector2(244, -789)
 
 [node name="Bonfire" parent="." instance=ExtResource("11_1um2b")]
 position = Vector2(106, -149)
+
+[node name="Knight" parent="." instance=ExtResource("2_fn6xv")]
+position = Vector2(707, -340)
