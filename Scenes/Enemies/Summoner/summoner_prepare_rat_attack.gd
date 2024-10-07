@@ -2,21 +2,18 @@ extends State
 
 @onready var animator := $"../../AnimationPlayer"
 @onready var enemy := $"../.."
+@export var attack_distance: int = 25
 
 func enter():
+	enemy.velocity.x = 0
 	animator.play("idle")
 
 func update(_delta):
 	if enemy.health <= 0:
 		state_transition.emit(self, "Death")
 	
-	enemy.velocity.x = 0
 	enemy.move_and_slide() # for falling if needed
 	
-	if enemy.player and enemy.player.health > 0:
-		state_transition.emit(self, "Run")
-
-
-func _on_detection_area_body_entered(body):
-	if body is Player:
-		enemy.player = body
+	var distance = (enemy.player.global_position - enemy.global_position)
+	if distance.length() <= attack_distance * 1.5:
+		state_transition.emit(self, "RatAttack")

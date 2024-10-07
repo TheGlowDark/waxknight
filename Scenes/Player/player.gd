@@ -20,10 +20,7 @@ func _ready():
 	light_frames = [light_frame0, light_frame1, light_frame2]
 
 func _physics_process(delta):
-	print(fsm.current_state.name)
-	point_light.texture = light_frames[current_frame]
-	point_light.energy = health
-	point_light.texture_scale = health * 0.5
+	update_light()
 	if fsm.current_state.name != 'Jump':
 		super.fall(delta)
 
@@ -35,3 +32,9 @@ func can_climb():
 
 func can_descend():
 	return damage_area.has_overlapping_bodies()
+
+func update_light():
+	var tween = create_tween()
+	tween.tween_property(point_light, "texture_scale", health*0.5, 0.5)
+	point_light.energy = health
+	point_light.texture = light_frames[current_frame]
