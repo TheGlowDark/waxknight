@@ -9,6 +9,11 @@ class_name Player
 @onready var collision_shape = $CollisionShape2D
 @onready var damage_area = $DamageArea
 
+var heals: int = 0
+#UI
+@onready var heals_label := $UI/Heals/Label
+@onready var hp_container := $UI/HP
+@onready var hp_icon_scene := preload("res://Scenes/UI/hp.tscn")
 
 
 var current_frame := 0
@@ -23,6 +28,7 @@ func _ready():
 
 func _physics_process(delta):
 	update_light()
+	update_ui()
 	if fsm.current_state.name != 'Jump':
 		super.fall(delta)
 
@@ -37,6 +43,22 @@ func can_descend():
 
 func update_light():
 	var tween = create_tween()
-	tween.tween_property(point_light, "texture_scale", max(0, health*0.5), 0.5)
+	tween.tween_property(point_light, "texture_scale", max(0, health*0.4), 0.5)
 	point_light.energy = max(0, health)
 	point_light.texture = light_frames[current_frame]
+
+func update_ui():
+	heals_label.text = str(heals)
+	update_hp_icons()
+
+func update_hp_icons():
+	var hp_icons = hp_container.get_children()
+	var delta_hp = health - hp_icons.size()
+	if delta_hp > 0:
+		for i in range(delta_hp):
+			var hp_icon = hp_icon_scene.instantiate()
+			hp_container.add_child(hp_icon)
+	elif delta_hp < 0:
+		for i in range(-delta_hp):
+			var hp_icon = hp_container.get_child(-1)
+			hp_icon.disappear()

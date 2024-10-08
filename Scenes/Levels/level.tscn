@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=25 format=3 uid="uid://wurbk1dl6mpo"]
 
+[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_rm5a4"]
 [ext_resource type="Texture2D" uid="uid://b7je1i0w7n86u" path="res://assets/textures/objects/traps/tube.png" id="1_tqlis"]
 [ext_resource type="Texture2D" uid="uid://br48jsm22atlu" path="res://assets/textures/objects/objects.png" id="1_yrify"]
 [ext_resource type="PackedScene" uid="uid://bbwahqculxqy1" path="res://Scenes/Player/player.tscn" id="2_b6flt"]
 [ext_resource type="PackedScene" uid="uid://djlntha484psc" path="res://Scenes/Enemies/Knight/knight.tscn" id="2_fn6xv"]
 [ext_resource type="Texture2D" uid="uid://b1ctrnw7v0p8p" path="res://assets/textures/background.png" id="2_wfi70"]
+[ext_resource type="PackedScene" uid="uid://c7y6uefvgurd7" path="res://Scenes/Other/camera_2d.tscn" id="2_x5t02"]
 [ext_resource type="PackedScene" uid="uid://cq0xhu7fssyjh" path="res://Scenes/Other/waterdrop_spawner.tscn" id="3_31cfg"]
 [ext_resource type="PackedScene" uid="uid://cdgy511b1qc6k" path="res://Scenes/Enemies/Summoner/summoner.tscn" id="4_bnp3r"]
 [ext_resource type="PackedScene" uid="uid://cl7rvsp1jsbn2" path="res://Scenes/Enemies/Wisp/wisp.tscn" id="4_pe5k1"]
@@ -12,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bj3qsmpakj26p" path="res://Scenes/Other/spikes.tscn" id="9_7iy8s"]
 [ext_resource type="PackedScene" uid="uid://d0svxhcdbk08e" path="res://Scenes/Other/torch.tscn" id="10_bvnih"]
 [ext_resource type="PackedScene" uid="uid://cg37nybvbkwtq" path="res://Scenes/Other/bonfire.tscn" id="11_1um2b"]
+[ext_resource type="Texture2D" uid="uid://bei7weeeulecq" path="res://assets/textures/cutscenes/cutscene2.png" id="14_o10vp"]
+[ext_resource type="PackedScene" uid="uid://jl6d6qrbo32a" path="res://Scenes/Other/heal.tscn" id="16_5mwsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yppl6"]
 texture = ExtResource("1_tqlis")
@@ -266,12 +270,53 @@ sources/0 = SubResource("TileSetAtlasSource_yppl6")
 background_mode = 3
 tonemap_mode = 3
 
+[sub_resource type="Animation" id="Animation_nm36n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_76rt0"]
+resource_name = "cutscene"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrql6"]
+_data = {
+"RESET": SubResource("Animation_nm36n"),
+"cutscene": SubResource("Animation_76rt0")
+}
+
 [node name="Level" type="Node2D"]
+script = ExtResource("1_rm5a4")
 
 [node name="Player" parent="." instance=ExtResource("2_b6flt")]
 z_index = 1
 position = Vector2(110, -77)
-health = 10
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_x5t02")]
+position = Vector2(-178, 324)
+target = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jqfmu")
@@ -321,3 +366,21 @@ position = Vector2(106, -149)
 
 [node name="Knight" parent="." instance=ExtResource("2_fn6xv")]
 position = Vector2(707, -340)
+
+[node name="Cutscenes" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Cutscenes"]
+position = Vector2(-381, 211)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("14_o10vp")
+centered = false
+hframes = 5
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes"]
+libraries = {
+"": SubResource("AnimationLibrary_jrql6")
+}
+
+[node name="Heal" parent="." instance=ExtResource("16_5mwsr")]
+position = Vector2(421, 4)
