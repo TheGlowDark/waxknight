@@ -11,7 +11,7 @@ extends Node2D
 
 func _ready():
 	canvas_modulate.visible = false
-	animation_player.play("cutscene", -1, 0.2)
+	animation_player.play("cutscene", -1, 0.1)
 	player.hide_ui()
 	await animation_player.animation_finished
 	camera.target = player
