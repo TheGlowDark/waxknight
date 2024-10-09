@@ -26,6 +26,8 @@ func update(_delta):
 			state_transition.emit(self, "Climb")
 		if Input.is_action_just_pressed("attack"):
 			state_transition.emit(self, "Attack")
+		if Input.is_action_just_pressed("attack2"):
+			state_transition.emit(self, "Attack2")
 		if Input.is_action_just_pressed("jump"):
 			state_transition.emit(self, "Jump")
 		if Input.is_action_just_pressed("dash"):
