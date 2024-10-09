@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cl7rvsp1jsbn2"]
+[gd_scene load_steps=20 format=3 uid="uid://cl7rvsp1jsbn2"]
 
 [ext_resource type="Texture2D" uid="uid://ca7q6wkfsw65a" path="res://assets/textures/enemies/wisp.png" id="1_7e2ql"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Wisp/wisp.gd" id="1_tt6vt"]
@@ -27,6 +27,14 @@ region = Rect2(192, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sng7p"]
 atlas = ExtResource("1_7e2ql")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flk41"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eb15"]
+atlas = ExtResource("1_7e2ql")
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0oiy"]
 atlas = ExtResource("1_7e2ql")
@@ -81,13 +89,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_flk41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eb15")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n0oiy")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bth1x")
 }],
 "loop": true,
-"name": &"side",
+"name": &"right",
 "speed": 5.0
 }, {
 "frames": [{
@@ -119,7 +138,7 @@ falling = false
 health = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-4, -20)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_7ywq4")
 animation = &"front"
 

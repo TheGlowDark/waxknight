@@ -5,7 +5,7 @@ extends State
 
 func enter():
 	# AudioManager.play_sound(AudioManager.ENEMY_HIT, 0.48, 20)
-	pass
+	enemy.velocity.x = 0
 
 func update(_delta):
 	if enemy.health <= 0:
@@ -13,4 +13,4 @@ func update(_delta):
 	else:
 		animator.play("attack")
 		await animator.animation_finished
-		state_transition.emit(self, "Run")
+		state_transition.emit(self, "Idle")

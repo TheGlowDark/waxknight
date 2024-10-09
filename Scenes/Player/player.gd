@@ -11,6 +11,7 @@ class_name Player
 
 var heals: int = 0
 #UI
+@onready var heals_icon = $UI/Heals
 @onready var heals_label := $UI/Heals/Label
 @onready var hp_container := $UI/HP
 @onready var hp_icon_scene := preload("res://Scenes/UI/hp.tscn")
@@ -62,3 +63,11 @@ func update_hp_icons():
 		for i in range(-delta_hp):
 			var hp_icon = hp_container.get_child(-1)
 			hp_icon.disappear()
+
+func hide_ui():
+	heals_icon.visible = false
+	hp_container.visible = false
+
+func show_ui():
+	heals_icon.visible = true
+	hp_container.visible = true

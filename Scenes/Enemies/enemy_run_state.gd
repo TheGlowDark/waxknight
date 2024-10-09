@@ -5,7 +5,7 @@ extends State
 @onready var sprite := $"../../Sprite2D"
 @onready var timer := $Timer
 @export var attack_distance: int = 20
-var speed := 5000.0
+@export var speed := 4000.0
 
 func enter():
 	# AudioManager.play_sound(AudioManager.WALKING_METAL, 1.0, -3)

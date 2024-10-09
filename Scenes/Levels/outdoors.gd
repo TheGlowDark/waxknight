@@ -12,9 +12,11 @@ extends Node2D
 func _ready():
 	canvas_modulate.visible = false
 	animation_player.play("cutscene", -1, 0.2)
+	player.hide_ui()
 	await animation_player.animation_finished
 	camera.target = player
 	canvas_modulate.visible = true
+	player.show_ui()
 
 
 func _process(_delta):
@@ -22,4 +24,3 @@ func _process(_delta):
 		camera.target = player
 		animation_player.stop()
 		canvas_modulate.visible = true
-

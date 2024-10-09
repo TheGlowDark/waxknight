@@ -3,7 +3,7 @@ extends State
 
 @onready var animator := $"../../AnimationPlayer"
 @onready var player := $"../.."
-var dash_speed = 20000
+@export var dash_speed: int = 20000
 
 
 func enter():

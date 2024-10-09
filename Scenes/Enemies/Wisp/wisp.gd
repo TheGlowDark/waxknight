@@ -27,10 +27,10 @@ func _process(delta):
 func update_direction():
 	if direction == Vector2.LEFT and raycast_left.is_colliding():
 		direction = Vector2.RIGHT
-		animator.play("side")
+		animator.play("right")
 	elif direction == Vector2.RIGHT and raycast_right.is_colliding():
 		direction = Vector2.LEFT
-		animator.play("side")
+		animator.play("left")
 	elif direction == Vector2.DOWN and raycast_down.is_colliding():
 		direction = Vector2.UP
 		animator.play("up")
@@ -39,12 +39,8 @@ func update_direction():
 		animator.play("down")
 
 func get_str_direction():
-	if direction == Vector2.LEFT or direction == Vector2.RIGHT:
-		return "side"
-	elif direction == Vector2.RIGHT:
-		return "right"
-	elif direction == Vector2.DOWN:
-		return "down"
+	var dict = {Vector2.LEFT: "left", Vector2.RIGHT: "right", Vector2.UP: "up", Vector2.DOWN: "down"}
+	return dict[direction]
 
 func _on_attack_area_area_entered(area):
 	var parent = area.get_parent()
