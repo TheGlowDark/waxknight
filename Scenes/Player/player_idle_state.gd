@@ -22,11 +22,13 @@ func update(_delta):
 			state_transition.emit(self, "Heal")
 		if Input.is_action_pressed("down"):
 			state_transition.emit(self, "Descend")
-		if player.can_climb() and (Input.is_action_pressed("up")):
+		if player.can_climb() and Input.is_action_pressed("up"):
 			state_transition.emit(self, "Climb")
 		if Input.is_action_just_pressed("attack"):
 			state_transition.emit(self, "Attack")
-		if Input.is_action_just_pressed("up"):
+		if Input.is_action_just_pressed("jump"):
 			state_transition.emit(self, "Jump")
 		if Input.is_action_just_pressed("dash"):
 			state_transition.emit(self, "Dash")
+		if Input.is_action_just_pressed("bounce"):
+			state_transition.emit(self, "Bounce")

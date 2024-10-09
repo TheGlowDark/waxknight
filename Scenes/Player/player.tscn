@@ -1,15 +1,17 @@
-[gd_scene load_steps=34 format=3 uid="uid://bbwahqculxqy1"]
+[gd_scene load_steps=39 format=3 uid="uid://bbwahqculxqy1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2y4dy"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="1_afjq4"]
-[ext_resource type="Texture2D" uid="uid://djnilqprc21v4" path="res://assets/textures/waxknight/waxknight.png" id="2_mxuyk"]
+[ext_resource type="Texture2D" path="res://assets/textures/waxknight/waxknight.png" id="2_mxuyk"]
 [ext_resource type="Script" path="res://Scenes/Player/player_attack_state.gd" id="3_e70ga"]
 [ext_resource type="Script" path="res://Scripts/attack_area.gd" id="3_ludvn"]
 [ext_resource type="Script" path="res://Scenes/Player/player_dash_state.gd" id="4_4higs"]
 [ext_resource type="Script" path="res://Scenes/Player/player_idle_state.gd" id="5_m2o1b"]
 [ext_resource type="Script" path="res://Scenes/Player/player_jump_state.gd" id="6_dno4x"]
+[ext_resource type="Script" path="res://Scenes/Player/player_attack2_state.gd" id="6_gubsf"]
 [ext_resource type="Script" path="res://Scenes/Player/player_heal_state.gd" id="6_x8uu3"]
 [ext_resource type="Script" path="res://Scenes/Player/player_run_state.gd" id="7_p3y2n"]
+[ext_resource type="Script" path="res://Scenes/Player/player_bounce_state.gd" id="9_eb6lr"]
 [ext_resource type="Script" path="res://Scenes/Player/player_death_state.gd" id="10_6cckm"]
 [ext_resource type="Script" path="res://Scenes/Player/player_fall_state.gd" id="11_12216"]
 [ext_resource type="Script" path="res://Scenes/Player/player_descend_state.gd" id="12_k77y2"]
@@ -23,6 +25,9 @@ size = Vector2(11, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gokcm"]
 size = Vector2(22, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_co7v1"]
+size = Vector2(25, 14)
 
 [sub_resource type="Animation" id="Animation_aqege"]
 length = 0.001
@@ -62,10 +67,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/AttackArea2/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_1sm7a"]
 resource_name = "attack"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -238,10 +255,56 @@ tracks/0/keys = {
 "values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)]
 }
 
+[sub_resource type="Animation" id="Animation_qxclj"]
+resource_name = "attack2"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/AttackArea2/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_237we"]
+resource_name = "bounce"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 7), Vector2i(1, 7)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5lhl8"]
 _data = {
 "RESET": SubResource("Animation_aqege"),
 "attack": SubResource("Animation_1sm7a"),
+"attack2": SubResource("Animation_qxclj"),
+"bounce": SubResource("Animation_237we"),
 "check_pocket": SubResource("Animation_34a37"),
 "climb": SubResource("Animation_o3nht"),
 "dash": SubResource("Animation_j1lmg"),
@@ -271,8 +334,8 @@ shape = SubResource("RectangleShape2D_4dh5g")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -19)
 texture = ExtResource("2_mxuyk")
-hframes = 15
-vframes = 7
+hframes = 10
+vframes = 9
 
 [node name="AttackArea" type="Area2D" parent="Sprite2D"]
 collision_layer = 0
@@ -282,6 +345,17 @@ script = ExtResource("3_ludvn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackArea"]
 position = Vector2(20, 1)
 shape = SubResource("RectangleShape2D_gokcm")
+disabled = true
+
+[node name="AttackArea2" type="Area2D" parent="Sprite2D"]
+position = Vector2(13, 2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_ludvn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackArea2"]
+position = Vector2(20.5, 10)
+shape = SubResource("RectangleShape2D_co7v1")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -296,11 +370,17 @@ initial_state = NodePath("Idle")
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("3_e70ga")
 
+[node name="Attack2" type="Node" parent="FSM"]
+script = ExtResource("6_gubsf")
+
 [node name="Heal" type="Node" parent="FSM"]
 script = ExtResource("6_x8uu3")
 
 [node name="Dash" type="Node" parent="FSM"]
 script = ExtResource("4_4higs")
+
+[node name="Bounce" type="Node" parent="FSM"]
+script = ExtResource("9_eb6lr")
 
 [node name="Idle" type="Node" parent="FSM"]
 script = ExtResource("5_m2o1b")
@@ -391,4 +471,5 @@ grow_horizontal = 0
 theme_override_constants/separation = 64
 
 [connection signal="area_entered" from="Sprite2D/AttackArea" to="Sprite2D/AttackArea" method="_on_area_entered"]
+[connection signal="area_entered" from="Sprite2D/AttackArea2" to="Sprite2D/AttackArea2" method="_on_area_entered"]
 [connection signal="timeout" from="PointLight2D/Timer2" to="." method="_on_timer_2_timeout"]

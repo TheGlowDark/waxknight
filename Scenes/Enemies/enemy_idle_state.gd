@@ -7,7 +7,6 @@ func enter():
 	animator.play("idle")
 
 func update(_delta):
-	print(enemy.velocity)
 	if enemy.health <= 0:
 		state_transition.emit(self, "Death")
 	

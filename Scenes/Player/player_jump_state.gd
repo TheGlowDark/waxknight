@@ -24,6 +24,8 @@ func update(_delta : float):
 	jump(input_dir, _delta)
 	if Input.is_action_just_pressed("dash"):
 		state_transition.emit(self, "dash")
+	if Input.is_action_just_pressed("bounce"):
+			state_transition.emit(self, "Bounce")
 
 
 func jump(input_dir: float, delta: float):

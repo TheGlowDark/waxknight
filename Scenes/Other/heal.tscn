@@ -1,21 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://jl6d6qrbo32a"]
 
-[ext_resource type="Texture2D" uid="uid://bbiplemnc1u58" path="res://assets/textures/ui/heal.png" id="1_faiwh"]
 [ext_resource type="Script" path="res://Scenes/Other/heal.gd" id="1_py5e1"]
+[ext_resource type="Texture2D" uid="uid://0ljds8xk4d0j" path="res://assets/textures/objects/wax.png" id="2_274ym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fdxd"]
-size = Vector2(19, 25)
+size = Vector2(10, 10)
 
 [node name="Heal" type="Area2D"]
-scale = Vector2(0.3, 0.3)
 collision_layer = 0
 script = ExtResource("1_py5e1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_faiwh")
+texture = ExtResource("2_274ym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -3.5)
+position = Vector2(1.66667, 1.66667)
 shape = SubResource("RectangleShape2D_0fdxd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
