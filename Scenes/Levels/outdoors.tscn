@@ -10,6 +10,42 @@
 [ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Other/light_source.tscn" id="8_vcpxs"]
 [ext_resource type="PackedScene" uid="uid://dsrnroexy6abs" path="res://Scenes/Other/transition_area.tscn" id="9_0o4q2"]
 
+[sub_resource type="Animation" id="Animation_cebn5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7wggu"]
+resource_name = "cutscene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjlk0"]
+_data = {
+"RESET": SubResource("Animation_cebn5"),
+"cutscene": SubResource("Animation_7wggu")
+}
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxy5b"]
 texture = ExtResource("1_4wvqt")
 texture_region_size = Vector2i(64, 64)
@@ -285,42 +321,6 @@ sources/1 = SubResource("TileSetAtlasSource_726uw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18i2s"]
 size = Vector2(671, 1112)
 
-[sub_resource type="Animation" id="Animation_cebn5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_7wggu"]
-resource_name = "cutscene"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjlk0"]
-_data = {
-"RESET": SubResource("Animation_cebn5"),
-"cutscene": SubResource("Animation_7wggu")
-}
-
 [node name="Outdoors" type="Node2D"]
 script = ExtResource("1_6fhkb")
 
@@ -328,11 +328,25 @@ script = ExtResource("1_6fhkb")
 z_index = 1
 position = Vector2(1917, 1781)
 
-[node name="Camera2D" parent="." instance=ExtResource("3_dygq6")]
-position = Vector2(200, 113)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
+
+[node name="Cutscenes" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Cutscenes"]
+position = Vector2(444, 242)
+texture = ExtResource("5_p2n17")
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes"]
+libraries = {
+"": SubResource("AnimationLibrary_wjlk0")
+}
+
+[node name="Camera2D" parent="." instance=ExtResource("3_dygq6")]
+position = Vector2(444, 242)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i43n0")
@@ -359,20 +373,6 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
 position = Vector2(336.5, 0)
 shape = SubResource("RectangleShape2D_18i2s")
-
-[node name="Cutscenes" type="Node" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Cutscenes"]
-scale = Vector2(2.7, 2.7)
-texture = ExtResource("5_p2n17")
-centered = false
-hframes = 3
-vframes = 3
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes"]
-libraries = {
-"": SubResource("AnimationLibrary_wjlk0")
-}
 
 [node name="Lightsource" parent="." instance=ExtResource("8_vcpxs")]
 position = Vector2(2380, 1776)
