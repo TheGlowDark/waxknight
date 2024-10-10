@@ -10,12 +10,12 @@ extends Node2D
 
 
 func _ready():
-	if sound:
-			AudioManager.play_sound(sound, 0, 1)
 	canvas_modulate.visible = false
 	animation_player.play("cutscene", -1, 0.1)
 	player.hide_ui()
 	await animation_player.animation_finished
+	if sound:
+		AudioManager.play_sound(sound, 0, 1)
 	camera.target = player
 	canvas_modulate.visible = true
 	player.show_ui()
