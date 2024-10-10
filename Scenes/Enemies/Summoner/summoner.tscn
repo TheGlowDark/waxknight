@@ -230,7 +230,7 @@ _data = {
 size = Vector2(13, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ug0ic"]
-radius = 164.027
+radius = 110.005
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ev23d"]
 size = Vector2(19, 28)
@@ -265,6 +265,11 @@ script = ExtResource("3_m5p3o")
 position = Vector2(-21, 6.5)
 shape = SubResource("RectangleShape2D_ilwy8")
 disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
+position = Vector2(0, -5)
+target_position = Vector2(40, 0)
+collision_mask = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -312,11 +317,6 @@ one_shot = true
 [node name="SummonTimer" type="Timer" parent="FSM/Run"]
 wait_time = 3.0
 one_shot = true
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -18)
-target_position = Vector2(40, 0)
-collision_mask = 4
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0

@@ -5,7 +5,7 @@ extends State
 @onready var sprite := $"../../Sprite2D"
 @onready var attack_timer = $AttackTimer
 @onready var summon_timer = $SummonTimer
-@onready var ray_cast := $"../../RayCast2D"
+@onready var ray_cast = $"../../Sprite2D/RayCast2D"
 @export var distance_to_player: int = 200
 @export var attack_distance: int = 20
 var has_knife: bool = false
