@@ -3,6 +3,7 @@ extends State
 @onready var animator := $"../../AnimationPlayer"
 @onready var enemy := $"../.."
 @onready var shockwave_scene := preload("res://Scenes/Enemies/Hand/shockwave.tscn")
+@onready var sound := preload("res://assets/sfx/hand/attack.wav")
 var dash_speed := 20000
 var initial_y_coordinate: int
 var created_shockwave := false
@@ -10,6 +11,7 @@ var created_shockwave := false
 
 func enter():
 	animator.play("attack")
+	AudioManager.play_sound(sound, 0, 1)
 	initial_y_coordinate = enemy.global_position.y
 	created_shockwave = false
 
@@ -47,11 +49,9 @@ func create_shockwave():
 		var shockwave_right = shockwave_scene.instantiate()
 		current_scene.add_child(shockwave_right)
 		shockwave_right.global_position.x = enemy.global_position.x + 32
-		tween_right.tween_property(shockwave_right, "global_position:x", shockwave_right.global_position.x+80, 0.4)
+		tween_right.tween_property(shockwave_right, "global_position:x", shockwave_right.global_position.x+100, 0.4)
 		
 		var shockwave_left = shockwave_scene.instantiate()
 		current_scene.add_child(shockwave_left)
 		shockwave_left.global_position.x = enemy.global_position.x - 32
-		tween_left.tween_property(shockwave_left, "global_position:x", shockwave_left.global_position.x-80, 0.4)
-		print(shockwave_left.global_position, shockwave_right.global_position)
-		print(enemy.global_position)
+		tween_left.tween_property(shockwave_left, "global_position:x", shockwave_left.global_position.x-100, 0.4)

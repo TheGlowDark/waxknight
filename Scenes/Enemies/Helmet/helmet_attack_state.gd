@@ -4,7 +4,7 @@ extends State
 @onready var animator := $"../../AnimationPlayer"
 @onready var enemy := $"../.."
 var dash_speed = 20000
-
+@export var sound: AudioStreamWAV
 
 func enter():
 	animator.play("attack")

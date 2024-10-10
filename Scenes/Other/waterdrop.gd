@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed := 150
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var sound := preload("res://assets/sfx/levelobjects_s/water_drop.wav")
 var damage: int = 1
 var can_move: bool = true
 
@@ -26,5 +27,7 @@ func _on_area_entered(area):
 func _on_body_entered(_body):
 	can_move = false
 	animated_sprite.play("drop")
+	if (get_tree().current_scene.player.global_position - global_position).length() <= 200:
+		AudioManager.play_sound(sound, 0, 1)
 	await animated_sprite.animation_finished
 	queue_free()

@@ -2,9 +2,12 @@ extends State
 
 @onready var animator := $"../../AnimationPlayer"
 @onready var enemy := $"../.."
+@export var sound1: AudioStreamWAV
+@export var sound2: AudioStreamWAV
 
 func enter():
-	# AudioManager.play_sound(AudioManager.ENEMY_HIT, 0.48, 20)
+	if sound1:
+		AudioManager.play_sound(sound1, 0, 1)
 	enemy.velocity.x = 0
 
 func update(_delta):
@@ -13,4 +16,6 @@ func update(_delta):
 	else:
 		animator.play("attack")
 		await animator.animation_finished
+		if sound2:
+			AudioManager.play_sound(sound2, 0, 1)
 		state_transition.emit(self, "Idle")

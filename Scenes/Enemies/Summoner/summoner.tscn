@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cdgy511b1qc6k"]
+[gd_scene load_steps=30 format=3 uid="uid://cdgy511b1qc6k"]
 
 [ext_resource type="Texture2D" uid="uid://b8q44begovlgc" path="res://assets/textures/enemies/summoner.png" id="1_dcumm"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_qhjqg"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Summoner/summoner_summon_state.gd" id="7_itk3g"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Summoner/summoner_rat_attack_state.gd" id="7_qnwt1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Summoner/summoner_run_state.gd" id="7_u30dc"]
+[ext_resource type="AudioStream" uid="uid://brdra1j0duobh" path="res://assets/sfx/summoner/enemy_spawn.wav" id="11_rgskv"]
+[ext_resource type="AudioStream" uid="uid://do7h7p1ueo1sh" path="res://assets/sfx/summoner/knife_attack.wav" id="11_xl6hp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbys2"]
 size = Vector2(18, 8)
@@ -286,6 +288,7 @@ initial_state = NodePath("Idle")
 
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("3_k0ajt")
+sound1 = ExtResource("11_xl6hp")
 
 [node name="Death" type="Node" parent="FSM"]
 script = ExtResource("3_yykyw")
@@ -298,9 +301,11 @@ script = ExtResource("5_sabo8")
 
 [node name="Summon" type="Node" parent="FSM"]
 script = ExtResource("7_itk3g")
+sound = ExtResource("11_rgskv")
 
 [node name="RatAttack" type="Node" parent="FSM"]
 script = ExtResource("7_qnwt1")
+sound = ExtResource("11_xl6hp")
 
 [node name="PrepareRatAttack" type="Node" parent="FSM"]
 script = ExtResource("7_aqt00")

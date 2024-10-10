@@ -6,6 +6,7 @@ extends State
 @onready var timer := $Timer
 @export var attack_distance: int = 20
 @export var speed := 4000.0
+@export var sound: AudioStreamWAV
 
 func enter():
 	# AudioManager.play_sound(AudioManager.WALKING_METAL, 1.0, -3)

@@ -6,10 +6,12 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var player = $Player
 @onready var canvas_modulate = $CanvasModulate
-
+@export var sound: AudioStreamWAV
 
 
 func _ready():
+	if sound:
+			AudioManager.play_sound(sound, 0, 1)
 	canvas_modulate.visible = false
 	animation_player.play("cutscene", -1, 0.1)
 	player.hide_ui()

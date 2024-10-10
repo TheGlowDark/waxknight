@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 
 CursorManager="*res://Scenes/Other/cursor_manager.tscn"
 GameManager="*res://Scripts/GameManager.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
 
 [display]
 

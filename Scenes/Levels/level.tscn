@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=30 format=3 uid="uid://wurbk1dl6mpo"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_rm5a4"]
 [ext_resource type="Texture2D" uid="uid://b7je1i0w7n86u" path="res://assets/textures/objects/traps/tube.png" id="1_tqlis"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cxaecwbnfdyto" path="res://Scenes/Enemies/Hand/hand.tscn" id="11_c4m1d"]
 [ext_resource type="Texture2D" uid="uid://bei7weeeulecq" path="res://assets/textures/cutscenes/cutscene2.png" id="14_o10vp"]
 [ext_resource type="PackedScene" uid="uid://jl6d6qrbo32a" path="res://Scenes/Other/heal.tscn" id="16_5mwsr"]
+[ext_resource type="AudioStream" uid="uid://bwi3niqiw2oqn" path="res://assets/sfx/osts/tower_bass.wav" id="20_4td6t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yppl6"]
 texture = ExtResource("1_tqlis")
@@ -734,5 +735,10 @@ position = Vector2(64, -1338)
 
 [node name="Heal11" parent="LightablesAndHeals" instance=ExtResource("16_5mwsr")]
 position = Vector2(714, -1338)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_4td6t")
+autoplay = true
+bus = &"Music"
 
 [connection signal="body_entered" from="Cutscenes/CutsceneArea" to="." method="_on_cutscene_area_body_entered"]

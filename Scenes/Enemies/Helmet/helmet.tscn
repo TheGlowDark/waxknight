@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://lsq2weax06w7"]
+[gd_scene load_steps=22 format=3 uid="uid://lsq2weax06w7"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_j00k5"]
 [ext_resource type="Texture2D" uid="uid://c712vp3camf0u" path="res://assets/textures/enemies/helmet.png" id="1_rl1v7"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="2_uiaep"]
 [ext_resource type="Script" path="res://Scripts/attack_area.gd" id="3_vrgtm"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Helmet/helmet_attack_state.gd" id="4_b6da3"]
+[ext_resource type="AudioStream" uid="uid://bj0xgley8dpov" path="res://assets/sfx/helmet_attack.wav" id="6_a1wg5"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_death_state.gd" id="6_dcp3n"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_hit_state.gd" id="7_urn65"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_idle_state.gd" id="8_a2a68"]
@@ -190,6 +191,7 @@ initial_state = NodePath("Idle")
 
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("4_b6da3")
+sound = ExtResource("6_a1wg5")
 
 [node name="Death" type="Node" parent="FSM"]
 script = ExtResource("6_dcp3n")

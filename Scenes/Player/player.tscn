@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bbwahqculxqy1"]
+[gd_scene load_steps=40 format=3 uid="uid://bbwahqculxqy1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2y4dy"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="1_afjq4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/player_idle_state.gd" id="5_m2o1b"]
 [ext_resource type="Script" path="res://Scenes/Player/player_jump_state.gd" id="6_dno4x"]
 [ext_resource type="Script" path="res://Scenes/Player/player_attack2_state.gd" id="6_gubsf"]
+[ext_resource type="AudioStream" uid="uid://dn53rvn0yi608" path="res://assets/sfx/enemy_hit.wav" id="6_up64m"]
 [ext_resource type="Script" path="res://Scenes/Player/player_heal_state.gd" id="6_x8uu3"]
 [ext_resource type="Script" path="res://Scenes/Player/player_run_state.gd" id="7_p3y2n"]
 [ext_resource type="Script" path="res://Scenes/Player/player_bounce_state.gd" id="9_eb6lr"]
@@ -369,9 +370,11 @@ initial_state = NodePath("Idle")
 
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("3_e70ga")
+sound = ExtResource("6_up64m")
 
 [node name="Attack2" type="Node" parent="FSM"]
 script = ExtResource("6_gubsf")
+sound = ExtResource("6_up64m")
 
 [node name="Heal" type="Node" parent="FSM"]
 script = ExtResource("6_x8uu3")

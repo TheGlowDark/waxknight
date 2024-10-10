@@ -347,6 +347,7 @@ libraries = {
 
 [node name="Camera2D" parent="." instance=ExtResource("3_dygq6")]
 position = Vector2(444, 242)
+limit_bottom = 1900
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i43n0")

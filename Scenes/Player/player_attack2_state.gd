@@ -2,9 +2,11 @@ extends State
 
 @onready var animator := $"../../AnimationPlayer"
 @onready var player = $"../.."
-
+@export var sound: AudioStreamWAV
 
 func enter():
+	if sound:
+		AudioManager.play_sound(sound, 0, 1)
 	if player.health <= 0:
 		state_transition.emit(self, "Death")
 	animator.play("attack2")

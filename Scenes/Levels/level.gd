@@ -5,6 +5,7 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var cutscene_animator = $Cutscenes/AnimationPlayer
 @onready var canvas_modulate = $CanvasModulate
+@export var sound: AudioStreamWAV
 
 
 func _ready():
@@ -17,6 +18,8 @@ func _process(_delta):
 
 func _on_cutscene_area_body_entered(body):
 	if body is Player:
+		if sound:
+			AudioManager.play_sound(sound, 0, 1)
 		player.hide_ui()
 		camera.target = null
 		camera.global_position = cutscene_sprite.global_position - Vector2(20, 0)

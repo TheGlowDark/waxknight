@@ -3,10 +3,12 @@ extends State
 @onready var animator := $"../../AnimationPlayer"
 @onready var enemy := $"../.."
 @onready var sprite = $"../../Sprite2D"
-
+@export var sound: AudioStreamWAV
 
 
 func enter():
+	if sound:
+		AudioManager.play_sound(sound, 0.3, 1)
 	if enemy.health <= 0:
 		state_transition.emit(self, "Death")
 

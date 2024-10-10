@@ -1,13 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwpxasrnfm8tt"]
+[gd_scene load_steps=22 format=3 uid="uid://bwpxasrnfm8tt"]
 
 [ext_resource type="Texture2D" uid="uid://dhswbte6ncoq0" path="res://assets/textures/enemies/jester.png" id="1_i6dh0"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_qhagi"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="2_asndp"]
 [ext_resource type="Script" path="res://Scripts/attack_area.gd" id="3_7tkxu"]
-[ext_resource type="Script" path="res://Scenes/Enemies/enemy_attack_state.gd" id="3_kbf8r"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_death_state.gd" id="4_xxywk"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Jester/jester_attack_state.gd" id="5_jly5n"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_hit_state.gd" id="5_sh8m3"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_idle_state.gd" id="6_4l0nn"]
+[ext_resource type="AudioStream" uid="uid://ccvwdqewo555w" path="res://assets/sfx/jester_s/jester's_bottle_breaks.wav" id="6_cagqf"]
+[ext_resource type="AudioStream" uid="uid://bnxduuo0bok4l" path="res://assets/sfx/jester_s/explosion.wav" id="7_8k8ha"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_run_state.gd" id="7_yw5ob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s25fo"]
@@ -78,27 +80,13 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false, true]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("Sprite2D/AttackArea/CollisionPolygon2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_die"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/AttackArea/CollisionPolygon2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -248,10 +236,18 @@ script = ExtResource("2_asndp")
 initial_state = NodePath("Idle")
 
 [node name="Attack" type="Node" parent="FSM"]
-script = ExtResource("3_kbf8r")
+script = ExtResource("5_jly5n")
+sound1 = ExtResource("6_cagqf")
+sound2 = ExtResource("7_8k8ha")
+
+[node name="Timer" type="Timer" parent="FSM/Attack"]
+wait_time = 0.7
+one_shot = true
 
 [node name="Death" type="Node" parent="FSM"]
 script = ExtResource("4_xxywk")
+sound1 = ExtResource("6_cagqf")
+sound2 = ExtResource("7_8k8ha")
 
 [node name="Hit" type="Node" parent="FSM"]
 script = ExtResource("5_sh8m3")
@@ -283,4 +279,5 @@ position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_gwc8m")
 
 [connection signal="area_entered" from="Sprite2D/AttackArea" to="Sprite2D/AttackArea" method="_on_area_entered"]
+[connection signal="timeout" from="FSM/Attack/Timer" to="FSM/Attack" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="FSM/Idle" method="_on_detection_area_body_entered"]

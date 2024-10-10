@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://djlntha484psc"]
+[gd_scene load_steps=22 format=3 uid="uid://djlntha484psc"]
 
 [ext_resource type="Texture2D" uid="uid://xjycjwg5sf7y" path="res://assets/textures/enemies/knight.png" id="1_qqbud"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_xr1ga"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/attack_area.gd" id="3_ne21g"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_attack_state.gd" id="5_g62h0"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_death_state.gd" id="6_2rdx7"]
+[ext_resource type="AudioStream" uid="uid://dax4lxm0l44xe" path="res://assets/sfx/knight/attack.wav" id="6_m22uh"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_hit_state.gd" id="7_aahfa"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_idle_state.gd" id="8_pdsn4"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_run_state.gd" id="9_2dise"]
@@ -190,6 +191,7 @@ initial_state = NodePath("Idle")
 
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("5_g62h0")
+sound1 = ExtResource("6_m22uh")
 
 [node name="Death" type="Node" parent="FSM"]
 script = ExtResource("6_2rdx7")
