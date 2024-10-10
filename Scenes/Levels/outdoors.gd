@@ -1,8 +1,8 @@
 extends Node2D
 
-
 @onready var sprite = $Cutscenes/Sprite2D
 @onready var animation_player = $Cutscenes/AnimationPlayer
+@onready var animator := $"../../AnimationPlayer"
 @onready var camera = $Camera2D
 @onready var player = $Player
 @onready var canvas_modulate = $CanvasModulate
