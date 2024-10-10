@@ -62,7 +62,8 @@ func update_hp_icons():
 	elif delta_hp < 0:
 		for i in range(-delta_hp):
 			var hp_icon = hp_container.get_child(-1)
-			hp_icon.disappear()
+			if hp_icon:
+				hp_icon.disappear()
 
 func hide_ui():
 	heals_icon.visible = false

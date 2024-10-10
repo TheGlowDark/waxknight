@@ -21,6 +21,6 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("skip"):
-		camera.target = player
 		animation_player.stop()
+		camera.target = player
 		canvas_modulate.visible = true

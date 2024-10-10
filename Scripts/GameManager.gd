@@ -4,10 +4,6 @@ extends Node
 var player: Player
 var config = ConfigFile.new()
 
-func _process(_delta):
-	if Input.is_action_just_pressed("restart"):
-		load_game()
-
 func reset():
 	load_same_level()
 

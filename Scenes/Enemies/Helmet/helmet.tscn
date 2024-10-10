@@ -65,7 +65,7 @@ tracks/1/path = NodePath("Sprite2D/AttackArea/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -173,7 +173,6 @@ vframes = 5
 [node name="AttackArea" type="Area2D" parent="Sprite2D"]
 collision_layer = 0
 script = ExtResource("3_vrgtm")
-damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackArea"]
 position = Vector2(11, -1)

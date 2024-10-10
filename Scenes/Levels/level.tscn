@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://wurbk1dl6mpo"]
+[gd_scene load_steps=29 format=3 uid="uid://wurbk1dl6mpo"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_rm5a4"]
 [ext_resource type="Texture2D" uid="uid://b7je1i0w7n86u" path="res://assets/textures/objects/traps/tube.png" id="1_tqlis"]
@@ -310,6 +310,9 @@ _data = {
 "cutscene": SubResource("Animation_76rt0")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pfkg"]
+size = Vector2(520, 42)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_rm5a4")
 
@@ -318,7 +321,7 @@ z_index = 1
 position = Vector2(110, -1)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_x5t02")]
-position = Vector2(-178, 324)
+position = Vector2(-176, 327)
 target = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -341,10 +344,9 @@ environment = SubResource("Environment_poyr3")
 [node name="Cutscenes" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Cutscenes"]
-position = Vector2(-381, 211)
+position = Vector2(-176, 346)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("14_o10vp")
-centered = false
 hframes = 5
 vframes = 5
 
@@ -352,6 +354,16 @@ vframes = 5
 libraries = {
 "": SubResource("AnimationLibrary_jrql6")
 }
+
+[node name="Marker2D" type="Marker2D" parent="Cutscenes"]
+position = Vector2(-196, 337)
+
+[node name="CutsceneArea" type="Area2D" parent="Cutscenes"]
+position = Vector2(392, -1778)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/CutsceneArea"]
+position = Vector2(1, -20)
+shape = SubResource("RectangleShape2D_5pfkg")
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
 
@@ -726,3 +738,5 @@ position = Vector2(64, -1338)
 
 [node name="Heal11" parent="LightablesAndHeals" instance=ExtResource("16_5mwsr")]
 position = Vector2(714, -1338)
+
+[connection signal="body_entered" from="Cutscenes/CutsceneArea" to="." method="_on_cutscene_area_body_entered"]
