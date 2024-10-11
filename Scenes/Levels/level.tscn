@@ -509,11 +509,8 @@ position = Vector2(310, -1101)
 [node name="Jester9" parent="." instance=ExtResource("9_twmo0")]
 position = Vector2(123, -1453)
 
-[node name="Jester10" parent="." instance=ExtResource("9_twmo0")]
-position = Vector2(681, -1334)
-
 [node name="Jester11" parent="." instance=ExtResource("9_twmo0")]
-position = Vector2(392, -1344)
+position = Vector2(162, -1334)
 
 [node name="Spikes" parent="." instance=ExtResource("16_raflh")]
 position = Vector2(371, 159)
@@ -582,7 +579,7 @@ position = Vector2(608, -1453)
 position = Vector2(506, -1453)
 
 [node name="Helmet" parent="." instance=ExtResource("18_4bb1f")]
-position = Vector2(428, -1016)
+position = Vector2(330, -988)
 
 [node name="Helmet2" parent="." instance=ExtResource("18_4bb1f")]
 position = Vector2(271, -553)
@@ -597,7 +594,7 @@ position = Vector2(180, -711)
 position = Vector2(360, -1535)
 
 [node name="Helmet6" parent="." instance=ExtResource("18_4bb1f")]
-position = Vector2(591, -880)
+position = Vector2(594, -882)
 
 [node name="Spikes9" parent="." instance=ExtResource("16_raflh")]
 position = Vector2(537, -793)
@@ -662,5 +659,8 @@ position = Vector2(640, -1595)
 
 [node name="Knight13" parent="." instance=ExtResource("2_fn6xv")]
 position = Vector2(723, 158)
+
+[node name="Knight14" parent="." instance=ExtResource("2_fn6xv")]
+position = Vector2(231, -1333)
 
 [connection signal="body_entered" from="Cutscenes/CutsceneArea" to="." method="_on_cutscene_area_body_entered"]
