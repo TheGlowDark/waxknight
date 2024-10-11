@@ -5,6 +5,8 @@ extends State
 @onready var sprite := $"../../Sprite2D"
 @onready var timer := $Timer
 @export var attack_distance: int = 20
+@onready var ray_cast = $"../../Sprite2D/RayCast2D"
+
 @export var speed := 4000.0
 @export var sound: AudioStreamWAV
 
@@ -20,10 +22,12 @@ func update(delta):
 
 	
 	var distance = (enemy.player.global_position - enemy.global_position)
-	if distance.length() >= attack_distance:
+	if distance.length() >= attack_distance and ray_cast.is_colliding():
 		enemy.velocity.x = distance.normalized().x * speed * delta
 	else:
-		enemy.velocity.x = distance.normalized().x * speed * delta * 0.2
+		enemy.velocity.x = 0
+		enemy.player = null
+		state_transition.emit(self, "Idle")
 	enemy.move_and_slide()
 	
 	if distance.x < 0:

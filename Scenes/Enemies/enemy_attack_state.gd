@@ -6,7 +6,7 @@ extends State
 @export var sound2: AudioStreamWAV
 
 func enter():
-	if sound1:
+	if sound1 and not GameManager.cutscene_playing:
 		AudioManager.play_sound(sound1, 0, 1)
 	enemy.velocity.x = 0
 
@@ -16,6 +16,6 @@ func update(_delta):
 	else:
 		animator.play("attack")
 		await animator.animation_finished
-		if sound2:
+		if sound2 and not GameManager.cutscene_playing:
 			AudioManager.play_sound(sound2, 0, 1)
 		state_transition.emit(self, "Idle")

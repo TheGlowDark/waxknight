@@ -18,6 +18,7 @@ func _process(_delta):
 
 func _on_cutscene_area_body_entered(body):
 	if body is Player:
+		GameManager.cutscene_playing = true
 		if sound:
 			AudioManager.play_sound(sound, 0, 1)
 		player.hide_ui()

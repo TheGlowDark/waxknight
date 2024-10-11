@@ -11,7 +11,8 @@ var created_shockwave := false
 
 func enter():
 	animator.play("attack")
-	AudioManager.play_sound(sound, 0, 1)
+	if sound and not GameManager.cutscene_playing:
+		AudioManager.play_sound(sound, 0, 1)
 	initial_y_coordinate = enemy.global_position.y
 	created_shockwave = false
 

@@ -1,5 +1,5 @@
 extends Enemy
-
+@onready var attack_area = $AttackArea/CollisionShape2D
 @export var speed: int = 5000
 @export var direction: Vector2 = Vector2.LEFT
 @onready var animator = $AnimatedSprite2D
@@ -20,6 +20,7 @@ func _process(delta):
 	move_and_slide()
 	update_direction()
 	if health <= 0 and not is_dead:
+		attack_area.disabled = true
 		is_dead = true
 		animator.play("death")
 		_die()

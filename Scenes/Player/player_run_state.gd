@@ -31,6 +31,10 @@ func update(delta : float):
 			state_transition.emit(self, "Dash")
 		if Input.is_action_just_pressed("bounce"):
 			state_transition.emit(self, "Bounce")
+		if Input.is_action_just_pressed("heal"):
+			state_transition.emit(self, "Heal")
+		if Input.is_action_pressed("down"):
+			state_transition.emit(self, "Descend")
 
 
 func move(input_dir: float, delta: float):

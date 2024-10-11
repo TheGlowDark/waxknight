@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dax4lxm0l44xe" path="res://assets/sfx/knight/attack.wav" id="6_m22uh"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_hit_state.gd" id="7_aahfa"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_idle_state.gd" id="8_pdsn4"]
-[ext_resource type="Script" path="res://Scenes/Enemies/enemy_run_state.gd" id="9_2dise"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Knight/knight_run_state.gd" id="10_df6kb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5yl6e"]
 size = Vector2(11, 20)
@@ -180,6 +180,11 @@ position = Vector2(18, 6.5)
 shape = SubResource("RectangleShape2D_7t370")
 disabled = true
 
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
+position = Vector2(9, 20)
+target_position = Vector2(0, 15)
+collision_mask = 36
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_d82k3")
@@ -203,8 +208,7 @@ script = ExtResource("7_aahfa")
 script = ExtResource("8_pdsn4")
 
 [node name="Run" type="Node" parent="FSM"]
-script = ExtResource("9_2dise")
-speed = 10000.0
+script = ExtResource("10_df6kb")
 
 [node name="Timer" type="Timer" parent="FSM/Run"]
 one_shot = true
