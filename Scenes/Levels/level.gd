@@ -15,9 +15,10 @@ func _process(_delta):
 	if Input.is_action_just_pressed("restart"):
 		GameManager.load_game()
 
-
 func _on_cutscene_area_body_entered(body):
 	if body is Player:
+		AudioServer.set_bus_mute(2, true)
+		AudioServer.set_bus_mute(1, true)
 		GameManager.cutscene_playing = true
 		if sound:
 			AudioManager.play_sound(sound, 0, 1)
