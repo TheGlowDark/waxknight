@@ -10,9 +10,12 @@ extends State
 @onready var animator := $"../../AnimationPlayer"
 @onready var sprite := $"../../Sprite2D"
 @onready var player := $"../.."
+@onready var sound1 := preload("res://assets/sfx/waxknight_s/jump.wav")
+@onready var sound2 := preload("res://assets/sfx/waxknight_s/afterjump.wav")
 
 
 func enter():
+	AudioManager.play_sound(sound2, 0.08, 1)
 	animator.play("jump")
 	player.velocity.y = jump_velocity
 
@@ -42,6 +45,7 @@ func jump(input_dir: float, delta: float):
 	if input_dir:
 		sprite.scale.x = sign(input_dir)
 	if player.is_on_floor():
+		AudioManager.play_sound(sound1, 0.71, 1)
 		state_transition.emit(self, "Idle")
 	
 
