@@ -1,6 +1,6 @@
 extends Enemy
 
-@export var speed: int = 4000
+@export var speed: int = 3000
 @onready var animator = $AnimationPlayer
 @onready var timer = $Timer
 @onready var attack_area = $Sprite2D/AttackArea/CollisionShape2D

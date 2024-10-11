@@ -9,7 +9,7 @@ class_name Player
 @onready var collision_shape = $CollisionShape2D
 @onready var damage_area = $DamageArea
 
-var heals: int = 0
+var heals: int = 3
 #UI
 @onready var heals_icon = $UI/Heals
 @onready var heals_label := $UI/Heals/Label
