@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	var direction = player.global_position - global_position
-	velocity = direction.normalized() * delta * speed
+	velocity = direction.normalized() * delta * speed if health > 0 else Vector2.ZERO
 	if not timer.is_stopped():
 		velocity *= -1
 	move_and_slide()
@@ -25,7 +25,6 @@ func _process(delta):
 		attack_area.disabled = true
 		is_dead = true
 		animator.play("death")
-		velocity = Vector2.ZERO
 		_die()
 
 
