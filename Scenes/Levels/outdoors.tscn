@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cvdnj2vj4urei"]
+[gd_scene load_steps=29 format=3 uid="uid://cvdnj2vj4urei"]
 
 [ext_resource type="Texture2D" uid="uid://bo5ijm88qtqmi" path="res://assets/textures/objects/outdoor_objects_64.png" id="1_4wvqt"]
 [ext_resource type="Script" path="res://Scenes/Levels/outdoors.gd" id="1_6fhkb"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://ds2tg26syjqmx" path="res://assets/DungeonFont.ttf" id="11_so3bs"]
 [ext_resource type="Texture2D" uid="uid://tjan2b6k25na" path="res://assets/textures/title_animtaed.png" id="13_t1hsi"]
 [ext_resource type="Script" path="res://Scenes/Levels/Area2D.gd" id="14_f1kl2"]
+[ext_resource type="PackedScene" uid="uid://cxaecwbnfdyto" path="res://Scenes/Enemies/Hand/hand.tscn" id="14_n7geg"]
 
 [sub_resource type="Animation" id="Animation_cebn5"]
 length = 0.001
@@ -475,8 +476,12 @@ hframes = 4
 frame = 3
 
 [node name="Area2D" type="Area2D" parent="title"]
+position = Vector2(0, -36)
 script = ExtResource("14_f1kl2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="title/Area2D"]
 position = Vector2(1699, 1447)
 shape = SubResource("RectangleShape2D_1o5mr")
+
+[node name="Hand" parent="." instance=ExtResource("14_n7geg")]
+position = Vector2(1250, 1763)
