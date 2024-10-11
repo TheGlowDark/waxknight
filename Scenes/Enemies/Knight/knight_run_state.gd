@@ -11,6 +11,8 @@ extends State
 @export var sound: AudioStreamWAV
 
 func enter():
+	if not enemy.player:
+		state_transition.emit(self, "Idle")
 	# AudioManager.play_sound(AudioManager.WALKING_METAL, 1.0, -3)
 	animator.play("run")
 
@@ -24,10 +26,11 @@ func update(delta):
 	var distance = (enemy.player.global_position - enemy.global_position)
 	if distance.length() >= attack_distance and ray_cast.is_colliding():
 		enemy.velocity.x = distance.normalized().x * speed * delta
-	else:
-		enemy.velocity.x = 0
+	elif not ray_cast.is_colliding():
 		enemy.player = null
 		state_transition.emit(self, "Idle")
+	else:
+		enemy.velocity.x = distance.normalized().x * speed * delta * 0.1
 	enemy.move_and_slide()
 	
 	if distance.x < 0:
