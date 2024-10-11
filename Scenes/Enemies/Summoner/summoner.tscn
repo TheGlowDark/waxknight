@@ -312,7 +312,7 @@ script = ExtResource("7_aqt00")
 
 [node name="Run" type="Node" parent="FSM"]
 script = ExtResource("7_u30dc")
-distance_to_player = 150
+distance_to_player = 80
 attack_distance = 25
 
 [node name="AttackTimer" type="Timer" parent="FSM/Run"]

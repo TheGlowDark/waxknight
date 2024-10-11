@@ -15,7 +15,7 @@
 size = Vector2(11, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7t370"]
-size = Vector2(20, 27)
+size = Vector2(28, 27)
 
 [sub_resource type="Animation" id="Animation_mwtbu"]
 length = 0.001
@@ -176,7 +176,7 @@ collision_layer = 0
 script = ExtResource("3_ne21g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackArea"]
-position = Vector2(18, 6.5)
+position = Vector2(14, 6.5)
 shape = SubResource("RectangleShape2D_7t370")
 disabled = true
 
