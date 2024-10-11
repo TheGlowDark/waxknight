@@ -12,13 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://bwpxasrnfm8tt" path="res://Scenes/Enemies/Jester/jester.tscn" id="9_twmo0"]
 [ext_resource type="PackedScene" uid="uid://d0svxhcdbk08e" path="res://Scenes/Other/torch.tscn" id="10_bvnih"]
 [ext_resource type="PackedScene" uid="uid://cg37nybvbkwtq" path="res://Scenes/Other/bonfire.tscn" id="11_1um2b"]
+[ext_resource type="AudioStream" uid="uid://dnjgjoe8xbfri" path="res://assets/sfx/osts/tower_bass.mp3" id="12_58rwc"]
 [ext_resource type="Texture2D" uid="uid://bei7weeeulecq" path="res://assets/textures/cutscenes/cutscene2.png" id="14_o10vp"]
 [ext_resource type="PackedScene" uid="uid://jl6d6qrbo32a" path="res://Scenes/Other/heal.tscn" id="16_5mwsr"]
 [ext_resource type="PackedScene" uid="uid://bj3qsmpakj26p" path="res://Scenes/Other/spikes.tscn" id="16_raflh"]
 [ext_resource type="PackedScene" uid="uid://cdgy511b1qc6k" path="res://Scenes/Enemies/Summoner/summoner.tscn" id="17_pbkb6"]
 [ext_resource type="PackedScene" uid="uid://lsq2weax06w7" path="res://Scenes/Enemies/Helmet/helmet.tscn" id="18_4bb1f"]
 [ext_resource type="PackedScene" uid="uid://cxaecwbnfdyto" path="res://Scenes/Enemies/Hand/hand.tscn" id="19_1yqck"]
-[ext_resource type="AudioStream" uid="uid://bwi3niqiw2oqn" path="res://assets/sfx/osts/tower_bass.wav" id="20_4td6t"]
 [ext_resource type="PackedScene" uid="uid://cl7rvsp1jsbn2" path="res://Scenes/Enemies/Wisp/wisp.tscn" id="20_773as"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yppl6"]
@@ -462,7 +462,7 @@ position = Vector2(715, -1333)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(398, -888)
-stream = ExtResource("20_4td6t")
+stream = ExtResource("12_58rwc")
 autoplay = true
 max_distance = 4000.0
 bus = &"Music"
