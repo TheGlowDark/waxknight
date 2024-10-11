@@ -375,7 +375,7 @@ script = ExtResource("1_6fhkb")
 
 [node name="Player" parent="." instance=ExtResource("3_dehaw")]
 z_index = 1
-position = Vector2(769, 1774)
+position = Vector2(2492, 1813)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

@@ -2,7 +2,6 @@ extends Node
 
 
 var player: Player
-var config = ConfigFile.new()
 var cutscene_playing := false
 
 func reset():
@@ -12,22 +11,35 @@ func load_next_level(next_scene: String):
 	get_tree().call_deferred("change_scene_to_file", next_scene)
 
 func load_same_level():
-	get_tree().call_deferred("reload_current_scene")
+	get_tree().change_scene_to_file("res://Scenes/Levels/level.tscn")
+
+func save():
+	player = get_tree().current_scene.get_child(0)
+	var save_dict = {
+		"x": player.global_position.x,
+		"y": player.global_position.y,
+	}
+	return save_dict
 
 func save_game():
-	player = get_tree().current_scene.get_child(0)
-	config.set_value("Player", "x", round(player.global_position.x))
-	config.set_value("Player", "y", round(player.global_position.y))
-	config.set_value("Player", "heals", player.heals)
-	config.save("res://savefile.cfg")
+	print("saved the game")
+	var save_game_file = FileAccess.open("res://savegame.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(save())
+	save_game_file.store_line(json_string)
 
 func load_game():
 	load_same_level()
+	await get_tree().process_frame
 	player = get_tree().current_scene.get_child(0)
-	var save_file = config.load("res://savefile.cfg")
-	if save_file == OK:
-		player.global_position.x = config.get_value("Player", "x")
-		player.global_position.y = config.get_value("Player", "y")
-		player.heals = config.get_value("Player", "heals")
-		player.health = 3
-		player.sprite.self_modulate.a = 255
+	if not FileAccess.file_exists("res://savegame.save"):
+		return
+	
+	var node_data = null
+	var save_game_file = FileAccess.open("res://savegame.save", FileAccess.READ)
+	while save_game_file.get_position() < save_game_file.get_length():
+		var json_string = save_game_file.get_line()
+		var json = JSON.new()
+		var _parse_result = json.parse(json_string)
+		node_data = json.get_data()
+	player.global_position.x = node_data["x"]
+	player.global_position.y = node_data["y"]
