@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/player_attack2_state.gd" id="6_gubsf"]
 [ext_resource type="AudioStream" uid="uid://dn53rvn0yi608" path="res://assets/sfx/enemy_hit.wav" id="6_up64m"]
 [ext_resource type="Script" path="res://Scenes/Player/player_heal_state.gd" id="6_x8uu3"]
-[ext_resource type="AudioStream" uid="uid://cgtf3mblirxce" path="res://assets/sfx/waxknight_s/attack.wav" id="7_ngqwq"]
+[ext_resource type="AudioStream" uid="uid://begvx0bkyyy00" path="res://assets/sfx/waxknight_s/attack.wav" id="7_ngqwq"]
 [ext_resource type="Script" path="res://Scenes/Player/player_run_state.gd" id="7_p3y2n"]
 [ext_resource type="Script" path="res://Scenes/Player/player_bounce_state.gd" id="9_eb6lr"]
 [ext_resource type="AudioStream" uid="uid://dw63lnompggs7" path="res://assets/sfx/waxknight_s/wx_k_thrust.wav" id="9_xn0kl"]
