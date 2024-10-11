@@ -375,10 +375,9 @@ script = ExtResource("1_6fhkb")
 
 [node name="Player" parent="." instance=ExtResource("3_dehaw")]
 z_index = 1
-position = Vector2(2492, 1813)
+position = Vector2(850, 1807)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Cutscenes" type="Node" parent="."]
