@@ -10,6 +10,7 @@ var is_dead: bool = false
 @onready var raycast_up = $RaycastUp
 @onready var raycast_right = $RaycastRight
 @onready var raycast_left = $RaycastLeft
+@onready var attack_area = $AttackArea/CollisionShape2D
 
 
 func _ready():
@@ -21,6 +22,7 @@ func _process(delta):
 	update_direction()
 	if health <= 0 and not is_dead:
 		is_dead = true
+		attack_area.disabled = true
 		animator.play("death")
 		_die()
 

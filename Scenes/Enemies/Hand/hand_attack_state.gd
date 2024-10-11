@@ -49,9 +49,11 @@ func create_shockwave():
 		var shockwave_right = shockwave_scene.instantiate()
 		current_scene.add_child(shockwave_right)
 		shockwave_right.global_position.x = enemy.global_position.x + 32
+		shockwave_right.global_position.y = enemy.global_position.y - 16
 		tween_right.tween_property(shockwave_right, "global_position:x", shockwave_right.global_position.x+100, 0.4)
 		
 		var shockwave_left = shockwave_scene.instantiate()
 		current_scene.add_child(shockwave_left)
 		shockwave_left.global_position.x = enemy.global_position.x - 32
+		shockwave_left.global_position.y = enemy.global_position.y - 16
 		tween_left.tween_property(shockwave_left, "global_position:x", shockwave_left.global_position.x-100, 0.4)

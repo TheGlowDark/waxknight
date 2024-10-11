@@ -4,9 +4,10 @@ extends State
 @onready var animator := $"../../AnimationPlayer"
 @onready var player := $"../.."
 @export var dash_speed: int = 20000
-
+@onready var sound := preload("res://assets/sfx/waxknight_s/bounce.wav")
 
 func enter():
+	AudioManager.play_sound(sound, 0.75, 1)
 	animator.play("dash")
 
 func update(delta):

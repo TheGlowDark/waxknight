@@ -1,16 +1,16 @@
 [gd_scene load_steps=28 format=3 uid="uid://cvdnj2vj4urei"]
 
-[ext_resource type="Texture2D" uid="uid://c36fd7nyisdem" path="res://assets/textures/objects/outdoor_objects_64.png" id="1_4wvqt"]
+[ext_resource type="Texture2D" uid="uid://bo5ijm88qtqmi" path="res://assets/textures/objects/outdoor_objects_64.png" id="1_4wvqt"]
 [ext_resource type="Script" path="res://Scenes/Levels/outdoors.gd" id="1_6fhkb"]
 [ext_resource type="Texture2D" uid="uid://dp6yj8akl03po" path="res://assets/textures/background64x64.png" id="2_wkye2"]
 [ext_resource type="PackedScene" uid="uid://bbwahqculxqy1" path="res://Scenes/Player/player.tscn" id="3_dehaw"]
 [ext_resource type="PackedScene" uid="uid://c7y6uefvgurd7" path="res://Scenes/Other/camera_2d.tscn" id="3_dygq6"]
-[ext_resource type="Texture2D" uid="uid://c184mrjqfl84f" path="res://assets/textures/objects/the_tower.png" id="5_m8v01"]
-[ext_resource type="Texture2D" uid="uid://c05robieajkg2" path="res://assets/textures/cutscenes/cutscene1.png" id="5_p2n17"]
+[ext_resource type="Texture2D" uid="uid://dqmnpr0pl8kbo" path="res://assets/textures/objects/the_tower.png" id="5_m8v01"]
+[ext_resource type="Texture2D" uid="uid://ge7me8do4n01" path="res://assets/textures/cutscenes/cutscene1.png" id="5_p2n17"]
 [ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Other/light_source.tscn" id="8_vcpxs"]
 [ext_resource type="PackedScene" uid="uid://dsrnroexy6abs" path="res://Scenes/Other/transition_area.tscn" id="9_0o4q2"]
 [ext_resource type="AudioStream" uid="uid://b5v2a7o0x7ynr" path="res://assets/sfx/osts/ost.wav" id="10_jkov0"]
-[ext_resource type="FontFile" uid="uid://degio2wxrl0iy" path="res://assets/DungeonFont.ttf" id="11_so3bs"]
+[ext_resource type="FontFile" uid="uid://ds2tg26syjqmx" path="res://assets/DungeonFont.ttf" id="11_so3bs"]
 [ext_resource type="Texture2D" uid="uid://tjan2b6k25na" path="res://assets/textures/title_animtaed.png" id="13_t1hsi"]
 [ext_resource type="Script" path="res://Scenes/Levels/Area2D.gd" id="14_f1kl2"]
 
@@ -331,21 +331,6 @@ font = ExtResource("11_so3bs")
 [sub_resource type="LabelSettings" id="LabelSettings_oucwj"]
 font = ExtResource("11_so3bs")
 
-[sub_resource type="Animation" id="Animation_5kt6a"]
-resource_name = "title_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
 [sub_resource type="Animation" id="Animation_4atnd"]
 length = 0.001
 tracks/0/type = "value"
@@ -359,6 +344,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(),
 "update": 1,
 "values": []
+}
+
+[sub_resource type="Animation" id="Animation_5kt6a"]
+resource_name = "title_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jm5u4"]

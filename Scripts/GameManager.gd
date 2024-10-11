@@ -20,6 +20,7 @@ func save_game():
 	config.save("res://savefile.cfg")
 
 func load_game():
+	load_same_level()
 	player = get_tree().current_scene.get_child(0)
 	var save_file = config.load("res://savefile.cfg")
 	if save_file == OK:

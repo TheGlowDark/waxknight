@@ -5,9 +5,11 @@ extends State
 @onready var animator := $"../../AnimationPlayer"
 @onready var sprite := $"../../Sprite2D"
 @onready var player := $"../.."
+@onready var sound := preload("res://assets/sfx/waxknight_s/woodwalk2.wav")
 
 
 func enter():
+	# AudioManager.play_sound(sound, 0.1, 1)
 	animator.play("run")
 
 func update(delta : float):
@@ -21,6 +23,8 @@ func update(delta : float):
 	move(input_dir, delta)
 
 	if player.is_on_floor():
+		if Input.is_action_just_pressed("heal"):
+			state_transition.emit(self, "Heal")
 		if Input.is_action_just_pressed("attack"):
 			state_transition.emit(self, "attack")
 		if Input.is_action_just_pressed("attack2"):
@@ -31,6 +35,8 @@ func update(delta : float):
 			state_transition.emit(self, "Dash")
 		if Input.is_action_just_pressed("bounce"):
 			state_transition.emit(self, "Bounce")
+		if Input.is_action_pressed("down"):
+			state_transition.emit(self, "Descend")
 
 
 func move(input_dir: float, delta: float):

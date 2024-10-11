@@ -3,6 +3,8 @@ extends Enemy
 @export var speed: int = 5000
 @onready var animator = $AnimationPlayer
 @onready var timer = $Timer
+@onready var attack_area = $Sprite2D/AttackArea/CollisionShape2D
+
 var damage: int = 1
 var is_dead: bool = false
 
@@ -21,6 +23,7 @@ func _process(delta):
 	sprite.scale.x = 1 if velocity.x >= 0 else -1
 	if health <= 0 and not is_dead:
 		is_dead = true
+		attack_area.disabled = true
 		animator.play("death")
 		_die()
 
