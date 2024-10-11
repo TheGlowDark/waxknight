@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bbwahqculxqy1"]
+[gd_scene load_steps=43 format=3 uid="uid://bbwahqculxqy1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2y4dy"]
 [ext_resource type="Script" path="res://Scripts/finite_state_machine.gd" id="1_afjq4"]
@@ -31,6 +31,9 @@ size = Vector2(22, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co7v1"]
 size = Vector2(25, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtrlq"]
+size = Vector2(24, 10)
 
 [sub_resource type="Animation" id="Animation_aqege"]
 length = 0.001
@@ -375,6 +378,14 @@ position = Vector2(20.5, 10)
 shape = SubResource("RectangleShape2D_co7v1")
 disabled = true
 
+[node name="CoyoteArea" type="Area2D" parent="Sprite2D"]
+collision_layer = 0
+collision_mask = 36
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/CoyoteArea"]
+position = Vector2(-18, 15)
+shape = SubResource("RectangleShape2D_gtrlq")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5lhl8")
@@ -439,7 +450,7 @@ position = Vector2(0.5, -10)
 shape = SubResource("RectangleShape2D_pj2b3")
 
 [node name="PointLight2D" parent="." instance=ExtResource("14_xq4ya")]
-position = Vector2(2, -25)
+position = Vector2(2, -21)
 script = null
 
 [node name="Timer2" type="Timer" parent="PointLight2D"]

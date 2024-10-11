@@ -13,10 +13,10 @@ func enter():
 func update(delta : float):
 	if player.health <= 0:
 		state_transition.emit(self, "Death")
-	
+
 	if not player.is_on_floor():
 		state_transition.emit(self, "Fall")
-	
+
 	var input_dir = Input.get_axis("left", "right")
 	move(input_dir, delta)
 

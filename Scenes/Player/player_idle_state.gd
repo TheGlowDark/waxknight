@@ -16,7 +16,10 @@ func update(_delta):
 
 	if Input.get_axis("left", "right") and player:
 			state_transition.emit(self, "Run")
-
+	
+	if not player.is_on_floor():
+		state_transition.emit(self, "Fall")
+	
 	if player.is_on_floor():
 		if Input.is_action_just_pressed("heal"):
 			state_transition.emit(self, "Heal")
