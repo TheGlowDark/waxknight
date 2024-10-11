@@ -27,7 +27,7 @@ func update(delta):
 	if distance.length() >= attack_distance and ray_cast.is_colliding():
 		enemy.velocity.x = distance.normalized().x * speed * delta
 	elif not ray_cast.is_colliding():
-		enemy.player = null
+	#	enemy.player = null
 		state_transition.emit(self, "Idle")
 	else:
 		enemy.velocity.x = distance.normalized().x * speed * delta * 0.1
