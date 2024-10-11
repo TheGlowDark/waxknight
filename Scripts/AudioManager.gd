@@ -25,6 +25,7 @@ func play_sound(audiostream: AudioStreamWAV, offset : float, volume : float):
 	# If no player is available and we havent reached the maximum amount of players, create a new one
 	if available_player == null and audio_players.size() < max_players:
 		available_player = AudioStreamPlayer.new()
+		available_player.bus = "SFX"
 		audio_players.append(available_player)
 		add_child(available_player)
 
@@ -37,5 +38,6 @@ func play_sound(audiostream: AudioStreamWAV, offset : float, volume : float):
 func initiate_audio_stream():
 	for i in range(starting_players):
 		var player = AudioStreamPlayer.new()
+		player.bus = "SFX"
 		audio_players.append(player)
 		add_child(player)

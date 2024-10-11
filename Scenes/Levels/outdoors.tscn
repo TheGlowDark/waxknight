@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ge7me8do4n01" path="res://assets/textures/cutscenes/cutscene1.png" id="5_p2n17"]
 [ext_resource type="PackedScene" uid="uid://bsfpya8paop5f" path="res://Scenes/Other/light_source.tscn" id="8_vcpxs"]
 [ext_resource type="PackedScene" uid="uid://dsrnroexy6abs" path="res://Scenes/Other/transition_area.tscn" id="9_0o4q2"]
-[ext_resource type="AudioStream" uid="uid://b5v2a7o0x7ynr" path="res://assets/sfx/osts/ost.wav" id="10_jkov0"]
+[ext_resource type="AudioStream" uid="uid://c4vbpc4mom87u" path="res://assets/sfx/osts/ost.mp3" id="10_2wy6t"]
 [ext_resource type="FontFile" uid="uid://ds2tg26syjqmx" path="res://assets/DungeonFont.ttf" id="11_so3bs"]
 [ext_resource type="Texture2D" uid="uid://tjan2b6k25na" path="res://assets/textures/title_animtaed.png" id="13_t1hsi"]
 [ext_resource type="Script" path="res://Scenes/Levels/Area2D.gd" id="14_f1kl2"]
@@ -378,7 +378,6 @@ z_index = 1
 position = Vector2(769, 1774)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Cutscenes" type="Node" parent="."]
@@ -437,7 +436,7 @@ position = Vector2(2584, 1822)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(2579, 1703)
-stream = ExtResource("10_jkov0")
+stream = ExtResource("10_2wy6t")
 autoplay = true
 max_distance = 4000.0
 bus = &"Music"
@@ -457,7 +456,7 @@ offset_top = 1722.0
 offset_right = 1696.0
 offset_bottom = 1771.0
 text = "Art, idea and sounds - TheGlowDark
-Programming and level design - BKamol "
+Programming and level design - DioNiceGenes "
 label_settings = SubResource("LabelSettings_oucwj")
 
 [node name="title" type="Node" parent="."]

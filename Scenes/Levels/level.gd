@@ -20,6 +20,7 @@ func _on_cutscene_area_body_entered(body):
 	if body is Player:
 		if sound:
 			AudioManager.play_sound(sound, 0, 1)
+		AudioServer.set_bus_mute(2, true)
 		player.hide_ui()
 		camera.target = null
 		camera.global_position = cutscene_sprite.global_position - Vector2(20, 0)
