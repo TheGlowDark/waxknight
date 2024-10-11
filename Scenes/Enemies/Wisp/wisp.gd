@@ -23,6 +23,7 @@ func _process(delta):
 		attack_area.disabled = true
 		is_dead = true
 		animator.play("death")
+		velocity = Vector2.ZERO
 		_die()
 
 func update_direction():
