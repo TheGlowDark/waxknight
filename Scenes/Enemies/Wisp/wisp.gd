@@ -16,14 +16,13 @@ func _ready():
 	animator.play(get_str_direction())
 
 func _process(delta):
-	velocity = direction * delta * speed
-	move_and_slide()
 	update_direction()
+	velocity = direction * delta * speed if health > 0 else Vector2.ZERO
+	move_and_slide()
 	if health <= 0 and not is_dead:
 		attack_area.disabled = true
 		is_dead = true
 		animator.play("death")
-		velocity = Vector2.ZERO
 		_die()
 
 func update_direction():
