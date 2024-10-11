@@ -148,7 +148,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ssey"]
-size = Vector2(202, 40)
+size = Vector2(202, 138)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p3fox"]
 radius = 21.0
@@ -214,7 +214,7 @@ position = Vector2(-6, -25)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(6, 5)
+position = Vector2(6, 54)
 shape = SubResource("RectangleShape2D_7ssey")
 
 [node name="DamageArea" type="Area2D" parent="."]

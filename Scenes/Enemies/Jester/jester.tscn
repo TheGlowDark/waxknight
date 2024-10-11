@@ -197,7 +197,7 @@ _data = {
 size = Vector2(16, 21)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwc8m"]
-radius = 69.0072
+radius = 126.43
 
 [node name="Jester" type="CharacterBody2D"]
 collision_layer = 2
@@ -258,7 +258,7 @@ script = ExtResource("6_4l0nn")
 [node name="Run" type="Node" parent="FSM"]
 script = ExtResource("7_yw5ob")
 attack_distance = 50
-speed = 1000.0
+speed = 14000.0
 
 [node name="Timer" type="Timer" parent="FSM/Run"]
 one_shot = true

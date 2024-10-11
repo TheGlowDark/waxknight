@@ -458,7 +458,7 @@ offset_top = 1722.0
 offset_right = 1696.0
 offset_bottom = 1771.0
 text = "Art, idea and sounds - TheGlowDark
-Programming and level design - BKamol "
+Programming - BKamol "
 label_settings = SubResource("LabelSettings_oucwj")
 
 [node name="title" type="Node" parent="."]

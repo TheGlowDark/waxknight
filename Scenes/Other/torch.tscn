@@ -136,6 +136,7 @@ one_shot = true
 
 [node name="Lightsource" parent="." instance=ExtResource("2_qrggc")]
 position = Vector2(0, -10)
+texture_scale = 0.5
 light_scale = 0.1
 light_energy = 0.5
 

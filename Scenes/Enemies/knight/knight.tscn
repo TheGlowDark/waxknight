@@ -149,7 +149,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6xug"]
-radius = 48.1664
+radius = 55.72
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xnau"]
 size = Vector2(14, 28)
@@ -204,6 +204,7 @@ script = ExtResource("8_pdsn4")
 
 [node name="Run" type="Node" parent="FSM"]
 script = ExtResource("9_2dise")
+speed = 10000.0
 
 [node name="Timer" type="Timer" parent="FSM/Run"]
 one_shot = true

@@ -1,6 +1,6 @@
 extends State
 
-var speed: float = 10000.0
+@export var speed: float = 10000.0
 @export var jump_height: float
 @export var jump_time_to_peak: float
 @export var jump_time_to_descent: float

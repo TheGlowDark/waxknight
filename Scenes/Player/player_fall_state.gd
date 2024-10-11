@@ -1,6 +1,6 @@
 extends State
 
-var speed: float = 10000.0
+@export var speed: float = 10000.0
 @onready var animator := $"../../AnimationPlayer"
 @onready var sprite := $"../../Sprite2D"
 @onready var player := $"../.."

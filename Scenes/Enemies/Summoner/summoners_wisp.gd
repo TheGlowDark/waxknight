@@ -1,6 +1,6 @@
 extends Enemy
 
-@export var speed: int = 5000
+@export var speed: int = 4000
 @onready var animator = $AnimationPlayer
 @onready var timer = $Timer
 var damage: int = 1
