@@ -316,11 +316,11 @@ distance_to_player = 150
 attack_distance = 25
 
 [node name="AttackTimer" type="Timer" parent="FSM/Run"]
-wait_time = 1.5
+wait_time = 2.0
 one_shot = true
 
 [node name="SummonTimer" type="Timer" parent="FSM/Run"]
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
