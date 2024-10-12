@@ -460,6 +460,15 @@ text = "Art, idea and music - TheGlowDark
 Programming - DioNiceGenes"
 label_settings = SubResource("LabelSettings_oucwj")
 
+[node name="Label3" type="Label" parent="."]
+offset_left = 3513.0
+offset_top = 1730.0
+offset_right = 3816.0
+offset_bottom = 1779.0
+text = "Wait, where are you going?
+Don't you care about darkness?"
+label_settings = SubResource("LabelSettings_oucwj")
+
 [node name="title" type="Node" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="title"]

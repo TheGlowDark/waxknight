@@ -319,7 +319,7 @@ script = ExtResource("1_rm5a4")
 
 [node name="Player" parent="." instance=ExtResource("2_b6flt")]
 z_index = 1
-position = Vector2(38, 5)
+position = Vector2(27, -2)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_x5t02")]
 position = Vector2(-293, 263)

@@ -12,7 +12,7 @@ func _ready():
 	camera.target = player
 
 func _process(_delta):
-	if Input.is_action_just_pressed("restart"):
+	if Input.is_action_just_pressed("restart") and not GameManager.cutscene_playing:
 		GameManager.load_game()
 
 func _on_cutscene_area_body_entered(body):

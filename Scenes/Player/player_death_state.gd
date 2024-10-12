@@ -9,5 +9,6 @@ func enter():
 	AudioManager.play_sound(sound, 0, 1)
 	animator.play("death", -1, 2)
 	await animator.animation_finished
-	GameManager.load_game()
+	if not GameManager.cutscene_playing:
+		GameManager.load_game()
 	state_transition.emit(self, "Idle")
