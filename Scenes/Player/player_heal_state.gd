@@ -18,3 +18,8 @@ func enter():
 		player.heals -= 1
 		player.health += 1
 	state_transition.emit(self, "Idle")
+
+
+func update(_delta):
+	player.velocity.x = 0
+	player.move_and_slide()

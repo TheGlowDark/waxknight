@@ -12,3 +12,7 @@ func enter():
 	animator.play("attack2")
 	await animator.animation_finished
 	state_transition.emit(self, "Idle")
+
+func update(_delta):
+	player.velocity.x = 0
+	player.move_and_slide()
