@@ -13,18 +13,17 @@ func load_next_level(next_scene: String):
 func load_same_level():
 	get_tree().change_scene_to_file("res://Scenes/Levels/level.tscn")
 
-func save():
-	player = get_tree().current_scene.get_child(0)
+func save(position: Vector2):
 	var save_dict = {
-		"x": player.global_position.x,
-		"y": player.global_position.y,
+		"x": position.x + 20,
+		"y": position.y - 16,
 	}
 	return save_dict
 
-func save_game():
+func save_game(position: Vector2):
 	print("saved the game")
 	var save_game_file = FileAccess.open("res://savegame.save", FileAccess.WRITE)
-	var json_string = JSON.stringify(save())
+	var json_string = JSON.stringify(save(position))
 	save_game_file.store_line(json_string)
 
 func load_game():

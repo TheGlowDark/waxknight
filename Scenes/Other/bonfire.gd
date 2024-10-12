@@ -11,4 +11,4 @@ func _on_area_entered(area):
 		animator.play("light")
 		await animator.animation_finished
 		animator.play("burning")
-		GameManager.save_game()
+		GameManager.save_game(global_position)
