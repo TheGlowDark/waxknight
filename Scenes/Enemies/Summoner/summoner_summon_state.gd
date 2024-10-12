@@ -17,7 +17,7 @@ func enter():
 
 func summon():
 	var wisp = wisp_scene.instantiate()
-	enemy.add_child(wisp)
+	enemy.get_parent().add_child(wisp)
 	wisp.global_position = enemy.global_position
 	wisp.global_position += Vector2(16, -16)
 	

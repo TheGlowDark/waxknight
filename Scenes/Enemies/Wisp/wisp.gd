@@ -50,3 +50,4 @@ func _on_attack_area_area_entered(area):
 		if parent is Enemy and parent.health > 0:
 			var p_fsm = parent.fsm
 			p_fsm.current_state.state_transition.emit(p_fsm.current_state, "Hit")
+

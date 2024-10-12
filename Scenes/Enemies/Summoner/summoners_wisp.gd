@@ -36,3 +36,6 @@ func _on_attack_area_area_entered(area):
 			var p_fsm = parent.fsm
 			p_fsm.current_state.state_transition.emit(p_fsm.current_state, "Hit")
 		timer.start()
+
+func _on_death_timer_timeout():
+	health = 0

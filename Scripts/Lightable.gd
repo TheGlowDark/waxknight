@@ -13,7 +13,7 @@ func _on_area_entered(area):
 	if not is_fired and (area is Lightable and area.is_fired == true or area_parent is Player):
 		is_fired = true
 		if sound:
-			AudioManager.play_sound(sound, 0, 1)
+			AudioManager.play_sound(sound, 0, 0.5)
 		timer.start()
 		animator.play("light")
 		await animator.animation_finished

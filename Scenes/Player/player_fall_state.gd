@@ -5,6 +5,8 @@ extends State
 @onready var sprite := $"../../Sprite2D"
 @onready var player := $"../.."
 @onready var coyote_area = $"../../Sprite2D/CoyoteArea"
+@onready var sound1 := preload("res://assets/sfx/waxknight_s/jump.wav")
+@onready var sound2 := preload("res://assets/sfx/waxknight_s/afterjump.wav")
 
 
 
@@ -30,4 +32,5 @@ func fall(delta: float):
 	if input_dir:
 		sprite.scale.x = sign(input_dir)
 	if player.is_on_floor():
+		AudioManager.play_sound(sound1, 0.71, 0.5)
 		state_transition.emit(self, "Idle")

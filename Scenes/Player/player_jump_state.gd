@@ -45,7 +45,7 @@ func jump(input_dir: float, delta: float):
 	if input_dir:
 		sprite.scale.x = sign(input_dir)
 	if player.is_on_floor():
-		AudioManager.play_sound(sound1, 0.71, 1)
+		AudioManager.play_sound(sound1, 0.71, 0.5)
 		state_transition.emit(self, "Idle")
 	
 
