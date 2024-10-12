@@ -21,7 +21,6 @@ func _ready():
 	camera.target = player
 	AudioServer.set_bus_mute(2, false)
 	canvas_modulate.visible = true
-	player.show_ui()
 
 
 func _process(_delta):

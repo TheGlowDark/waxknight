@@ -343,7 +343,7 @@ radius = 5.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 36
 script = ExtResource("1_2y4dy")
-health = 100
+health = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -10)

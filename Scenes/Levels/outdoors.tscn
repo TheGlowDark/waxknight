@@ -377,9 +377,6 @@ script = ExtResource("1_6fhkb")
 z_index = 1
 position = Vector2(850, 1807)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
-
 [node name="Cutscenes" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Cutscenes"]
@@ -489,3 +486,6 @@ script = ExtResource("14_f1kl2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="title/Area2D"]
 position = Vector2(1699, 1447)
 shape = SubResource("RectangleShape2D_1o5mr")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)

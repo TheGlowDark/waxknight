@@ -10,6 +10,7 @@ extends Node2D
 
 func _ready():
 	camera.target = player
+	player.show_ui()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("restart") and not GameManager.cutscene_playing:
