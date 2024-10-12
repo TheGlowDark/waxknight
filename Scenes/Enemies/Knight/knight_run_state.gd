@@ -23,6 +23,9 @@ func update(delta):
 		state_transition.emit(self, "Death")
 
 	var distance = (enemy.player.global_position - enemy.global_position)
+	if distance.y >= 100:
+		state_transition.emit(self, "Idle")
+	
 	if distance.length() >= attack_distance and ray_cast.is_colliding():
 		enemy.velocity.x = distance.normalized().x * speed * delta
 	else:
